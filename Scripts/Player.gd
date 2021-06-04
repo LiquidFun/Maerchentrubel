@@ -7,7 +7,7 @@ export var attack_damage_range = 20
 export var armor = 15
 export var hit_points = 2000
 
-onready var nav = get_parent().get_node("Navigation2D")
+onready var nav = get_parent().get_parent().get_node("Navigation2D")
 
 onready var ray = $RayCast2D
 onready var tween = $Tween
@@ -53,6 +53,10 @@ func move(dir):
 	ray.force_raycast_update()
 	if !ray.is_colliding():
 		move_tween(self.position + inputs[dir] * tile_size)
+	if dir == "ui_left":
+		$AnimatedSprite.flip_h = true
+	if dir == "ui_right":
+		$AnimatedSprite.flip_h = false
 
 func _unhandled_input(event):
 	if tween.is_active():
@@ -65,6 +69,7 @@ func _unhandled_input(event):
 		# movement with point and click
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 			print("pathfinding from " + str(self.position) + " to " + str(event.position))
+			print("pathfinding from " + str(self.global_position) + " to " + str(event.global_position))
 			path = nav.get_simple_path(self.global_position, event.global_position)
 			$Line2D.points = path
 			print("path is " + str(path))

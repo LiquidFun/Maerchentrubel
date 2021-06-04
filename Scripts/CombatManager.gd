@@ -14,7 +14,7 @@ func _process(delta):
 func initCombat():
 	rng.randomize()
 	combatant_list = get_tree().get_nodes_in_group("combatant")
-	combatant_list.append(get_parent().get_node("Player"))
+	combatant_list.append(get_tree().get_nodes_in_group("Player")[0])
 	for combatant in combatant_list:
 		combatant.initiative = rng.randi_range(1,20)
 	combatant_list.sort_custom(self, "sortCombatantsByInitiative")
