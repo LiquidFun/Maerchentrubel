@@ -11,7 +11,7 @@ onready var nav = get_parent().get_parent().get_node("Navigation2D")
 
 onready var ray = $RayCast2D
 onready var tween = $Tween
-
+onready var animated_sprite = $AnimatedSprite
 
 var path = PoolVector2Array()
 
@@ -35,11 +35,13 @@ func move_tween(newPos):
 		position, newPos,
 		1.0/tween_speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
+	animated_sprite.play()
 
 func move_tween_path(path):
 	tween.interpolate_property()
 
 func _on_Tween_tween_completed(object, key):
+	animated_sprite.stop()
 	if path.size() > 0:
 		print("move to " + str(path[0]))
 		tween.interpolate_property(self, "position",
@@ -47,6 +49,7 @@ func _on_Tween_tween_completed(object, key):
 			1.0/tween_speed, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		path.remove(0)
 		tween.start()
+		
 
 func move(dir):
 	ray.cast_to = inputs[dir] * tile_size
