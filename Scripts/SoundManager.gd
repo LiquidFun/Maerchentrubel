@@ -3,7 +3,7 @@ extends Node2D
 const MAX_VOLUME = 20
 const MIN_VOLUME = -50
 
-var music_on = true
+export var music_on = false
 var volume_modifier = 0
 var music_player = null
 
@@ -35,4 +35,4 @@ func _ready():
 	self.add_child(music_player)
 	music_player.stream = load("res://Resources/Sound/Music/Jim Hall - Heartache.mp3")
 	music_player.volume_db = -35
-	music_player.play()
+	#music_player.play()

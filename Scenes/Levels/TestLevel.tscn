@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Tilemaps/Tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Other/TestOpengameart.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Controllers/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Controllers/CombatManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Controllers/Combatant.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,3 +17,17 @@ tile_data = PoolIntArray( 393242, 2, 262148, 393243, 2, 131075, 393244, 2, 13107
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 472, 416 )
 gravity = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 128.578, -62.9742 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Combatant2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 535.931, 206.95 )
+hit_points = 888
+
+[node name="Combatant" parent="." instance=ExtResource( 5 )]
+position = Vector2( 762.988, 301.723 )
+
+[node name="CombatManager" parent="." instance=ExtResource( 4 )]
