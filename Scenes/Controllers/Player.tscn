@@ -20,3 +20,9 @@ shape = SubResource( 1 )
 position = Vector2( 0, 8 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 5.0
+default_color = Color( 0.647059, 0.239216, 0.239216, 1 )
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
