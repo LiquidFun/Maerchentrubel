@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Resources/Other/player_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/Light.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -14,7 +15,8 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 4.64596 )
 frames = ExtResource( 1 )
-animation = "walking_basket"
+animation = "idle_basket"
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
@@ -28,5 +30,12 @@ position = Vector2( 0, 8 )
 [node name="Line2D" type="Line2D" parent="."]
 width = 5.0
 default_color = Color( 0.647059, 0.239216, 0.239216, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -1.78814e-07, 4.19617e-05 )
+current = true
+zoom = Vector2( 0.2, 0.2 )
+
+[node name="Light" parent="." instance=ExtResource( 3 )]
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

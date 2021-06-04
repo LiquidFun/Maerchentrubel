@@ -2,12 +2,12 @@ extends Area2D
 
 export var turn_speed = 3
 export var tile_size = 16
-export var tween_speed = 3.0
+export var tween_speed = 5.0
 export var attack_damage_range = 20
 export var armor = 15
 export var hit_points = 2000
 
-onready var nav = get_parent().get_parent().get_node("Navigation2D")
+onready var nav = get_parent().get_parent()
 
 onready var ray = $RayCast2D
 onready var tween = $Tween
@@ -35,13 +35,13 @@ func move_tween(newPos):
 		position, newPos,
 		1.0/tween_speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.start()
-	animated_sprite.play()
+	animated_sprite.play("walking_basket")
 
 func move_tween_path(path):
 	tween.interpolate_property()
 
 func _on_Tween_tween_completed(object, key):
-	animated_sprite.stop()
+	#animated_sprite.stop()
 	if path.size() > 0:
 		print("move to " + str(path[0]))
 		tween.interpolate_property(self, "position",
@@ -67,8 +67,8 @@ func _unhandled_input(event):
 	if turn_speed > 0:
 		# movement with wasd
 		for i in inputs.keys():
-			if event.is_action_released(i):
-				move(i)
+			if event.is_action(i):
+				move(i)	
 		# movement with point and click
 		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 			print("pathfinding from " + str(self.position) + " to " + str(event.position))
