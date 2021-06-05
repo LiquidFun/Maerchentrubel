@@ -9,6 +9,7 @@ var battle_scene
 var players_turn = true
 var timer
 var turn = "player"
+var prev_player_position
 
 
 
@@ -18,9 +19,19 @@ func _ready():
 	rng.randomize()
 	
 func prepare_combatant(combatant, as_type):
+	if as_type == "Friendlies":
+		prev_player_position = combatant.position
 	combatant.position = battle_scene.get_node(as_type).position
 	combatant.scale = Vector2(5, 5)
 	combatant.z_index = 1
+	var sprite = combatant.get_node("AnimatedSprite")
+	sprite.flip_h = (as_type == "Enemy")
+	sprite.play("idle")
+	
+func unprepare_combatant(combatant, as_type):
+	combatant.position = prev_player_position
+	combatant.scale = Vector2(1, 1)
+	combatant.z_index = 0
 	var sprite = combatant.get_node("AnimatedSprite")
 	sprite.flip_h = (as_type == "Enemy")
 	sprite.play("idle")

@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Resources/Sprites/battle_background.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Battle.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Fonts/ChiKareGo.tres" type="DynamicFont" id=3]
 
-[node name="Battle" type="Node2D"]
-script = ExtResource( 2 )
+[node name="Battle2" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1025.0
@@ -33,7 +31,6 @@ margin_top = 302.0
 margin_right = 317.0
 margin_bottom = 353.0
 custom_fonts/font = ExtResource( 3 )
-text = "test"
 align = 1
 valign = 1
 autowrap = true
@@ -47,7 +44,6 @@ margin_top = 306.0
 margin_right = 859.0
 margin_bottom = 357.0
 custom_fonts/font = ExtResource( 3 )
-text = "test"
 align = 1
 valign = 1
 autowrap = true
