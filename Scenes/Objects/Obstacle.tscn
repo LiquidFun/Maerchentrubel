@@ -11,9 +11,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 6.17286
-height = 0.0
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 6.16501, 6.3568 )
 
 [node name="Obstacle" type="KinematicBody2D"]
 script = ExtResource( 2 )
