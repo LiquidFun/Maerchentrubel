@@ -70,6 +70,7 @@ func handle_combat_if_in_combat():
 			turn = ""
 			yield(timer, "timeout")
 			timer.queue_free()
+
 			battle_scene.get_node("FriendliesLabel").text = combatant.make_turn(player)
 			turn = "player"
 
