@@ -10,7 +10,7 @@
 [ext_resource path="res://Scenes/Objects/Gate.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Objects/Obstacle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Objects/Teleporter.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Scenes/Levels/TeleporterEncounter1.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/TeleporterEncounter1.gd" type="Script" id=11]
 
 [node name="Node2D" type="Node2D"]
 

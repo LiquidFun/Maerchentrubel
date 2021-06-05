@@ -5,15 +5,11 @@ export var teleport_location = Vector2(0,0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	if "TeleporterEncounter" in get_parent().name:
+		self.teleport_location = get_parent().teleport_coordinates
 
 
 func _on_Teleporter_body_entered(body):
 	if body.name == "Player":
-		print (body.name)
+		print (body.name +" was teleported to " +str(self.teleport_location))
 		body.position = teleport_location
