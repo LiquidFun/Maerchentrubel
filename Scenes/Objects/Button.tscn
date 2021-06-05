@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Resources/Sprites/Interactables/button_pressed.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Sprites/Interactables/button_not_pressed.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "on",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 7.01201
+height = 2.30151
+
+[node name="Button" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "off"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="." to="." method="_on_Button_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_Button_area_exited"]

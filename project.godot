@@ -22,6 +22,10 @@ config/icon="res://icon.png"
 
 SoundManager="*res://Scenes/Controllers/SoundManager.tscn"
 
+[display]
+
+window/stretch/mode="2d"
+
 [input]
 
 ui_left={
