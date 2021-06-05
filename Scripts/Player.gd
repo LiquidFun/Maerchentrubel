@@ -1,17 +1,20 @@
-extends Area2D
+extends KinematicBody2D
 
 export var turn_speed = 3
 export var tile_size = 16
 export var tween_speed = 5.0
 export var attack_damage_range = 20
 export var armor = 15
-export var hit_points = 2000
+export var hit_points = 100
+export var speed = 3000
 
 onready var nav = get_parent().get_parent()
 
 onready var ray = $RayCast2D
 onready var tween = $Tween
 onready var animated_sprite = $AnimatedSprite
+
+signal health_changed
 
 var path = PoolVector2Array()
 
@@ -41,7 +44,7 @@ func move_tween_path(path):
 	tween.interpolate_property()
 
 func _on_Tween_tween_completed(object, key):
-	#animated_sprite.stop()
+	animated_sprite.stop()
 	if path.size() > 0:
 		print("move to " + str(path[0]))
 		tween.interpolate_property(self, "position",
@@ -49,34 +52,22 @@ func _on_Tween_tween_completed(object, key):
 			1.0/tween_speed, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		path.remove(0)
 		tween.start()
-		
-
-func move(dir):
-	ray.cast_to = inputs[dir] * tile_size
-	ray.force_raycast_update()
-	if !ray.is_colliding():
-		move_tween(self.position + inputs[dir] * tile_size)
-	if dir == "ui_left":
-		$AnimatedSprite.flip_h = true
-	if dir == "ui_right":
-		$AnimatedSprite.flip_h = false
-
-func _unhandled_input(event):
-	if tween.is_active():
-		return
-	if turn_speed > 0:
-		# movement with wasd
-		for i in inputs.keys():
-			if event.is_action(i):
-				move(i)	
-		# movement with point and click
-		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-			print("pathfinding from " + str(self.position) + " to " + str(event.position))
-			print("pathfinding from " + str(self.global_position) + " to " + str(event.global_position))
-			path = nav.get_simple_path(self.global_position, event.global_position)
-			$Line2D.points = path
-			print("path is " + str(path))
-			_on_Tween_tween_completed(null, null)
+	
+func move(velocity):
+	# apply movement and detect collision
+	if velocity.length() > 1:
+		velocity = velocity.normalized()
+	velocity *= speed * get_process_delta_time()
+	self.move_and_slide(velocity, Vector2.UP)
+			
+	if velocity.length() > 0:
+		animated_sprite.play("walking_basket")
+	else:
+		animated_sprite.play("idle_basket")
+	if velocity.x < 0:
+		animated_sprite.flip_h = true
+	if velocity.x > 0:
+		animated_sprite.flip_h = false
 
 func make_turn():
 	pass
@@ -86,10 +77,12 @@ func make_attack(target):
 	var to_hit = rng.randi_range(1,20)
 	var damage = rng.randi_range(1,attack_damage_range)
 	target.receive_attack(to_hit, damage)
+	animated_sprite.play("attack_basket")
 
 func receive_attack(to_hit, damage):
 	if to_hit >= armor:
 		self.hit_points -= damage
+		emit_signal("health_changed", hit_points)
 		if self.hit_points <= 0:
 			self.die()
 		print(self.name +" receives " +str(damage) +" damage")
@@ -100,7 +93,14 @@ func die():
 	self.queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	# movement with wasd
+	var velocity = Vector2(0, 0)
+	for i in inputs.keys():
+		if Input.get_action_strength(i):
+			velocity += inputs[i]
+	move(velocity)	
+
+
 		#if Input.is_action_just_pressed("ui_up"):
 		#	position.y -= 16
 		#if Input.is_action_just_pressed("ui_left"):

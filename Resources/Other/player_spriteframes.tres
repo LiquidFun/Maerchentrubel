@@ -60,7 +60,7 @@ region = Rect2( 0, 0, 16, 16 )
 [resource]
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
-"loop": true,
+"loop": false,
 "name": "default",
 "speed": 5.0
 }, {
@@ -72,15 +72,15 @@ animations = [ {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": true,
 "name": "walking_basket",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
-"loop": true,
-"name": "attack",
+"loop": false,
+"name": "attack_basket",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 21 ) ],
-"loop": true,
+"loop": false,
 "name": "idle_basket",
 "speed": 5.0
 } ]

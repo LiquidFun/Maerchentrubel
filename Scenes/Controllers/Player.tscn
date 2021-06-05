@@ -4,23 +4,19 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Objects/Light.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.23195
 
-[node name="Player" type="Area2D" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, 4.64596 )
+position = Vector2( 0.0579433, 9.43454 )
 frames = ExtResource( 1 )
-animation = "idle_basket"
-playing = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 8 )
-shape = SubResource( 1 )
+animation = "attack_basket"
+offset = Vector2( 0, -5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 0, 8 )
@@ -36,6 +32,11 @@ position = Vector2( -1.78814e-07, 4.19617e-05 )
 current = true
 zoom = Vector2( 0.2, 0.2 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.905954, 9.48975 )
+shape = SubResource( 1 )
+
 [node name="Light" parent="." instance=ExtResource( 3 )]
+position = Vector2( -0.353546, 0.353554 )
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
