@@ -22,9 +22,9 @@ const max_health = 100
 func update_bars(player_health):
 	var bars = get_child_count()
 	for i in bars:
-		if player_health > max_health / bars * i:
+		if player_health > max_health / bars * (i + 0.5):
 			get_child(i).play("full")
-		elif player_health > max_health / bars * (i - 0.5):
+		elif player_health > max_health / bars * i:
 			get_child(i).play("half")
 		else:
 			get_child(i).play("empty")

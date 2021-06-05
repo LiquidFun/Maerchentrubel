@@ -9,6 +9,7 @@ var battle_scene
 var players_turn = true
 var timer
 var turn = "player"
+var attack_time
 var prev_player_position
 
 
@@ -19,8 +20,6 @@ func _ready():
 	rng.randomize()
 	
 func prepare_combatant(combatant, as_type):
-	if as_type == "Friendlies":
-		prev_player_position = combatant.position
 	combatant.position = battle_scene.get_node(as_type).position
 	combatant.scale = Vector2(5, 5)
 	combatant.z_index = 1
@@ -29,12 +28,12 @@ func prepare_combatant(combatant, as_type):
 	sprite.play("idle")
 	
 func unprepare_combatant(combatant, as_type):
-	combatant.position = prev_player_position
-	combatant.scale = Vector2(1, 1)
-	combatant.z_index = 0
-	var sprite = combatant.get_node("AnimatedSprite")
-	sprite.flip_h = (as_type == "Enemy")
-	sprite.play("idle")
+	if combatant != null:
+		combatant.scale = Vector2(1, 1)
+		combatant.z_index = 0
+		var sprite = combatant.get_node("AnimatedSprite")
+		sprite.flip_h = (as_type == "Enemy")
+		sprite.play("idle")
 	
 func dist(p1, p2):
 	return abs(p1.get_global_position().distance_to(p2.get_global_position()))
@@ -51,7 +50,7 @@ func start_combat_if_possible():
 		combatant = possible_combatant
 		in_combat = true
 		battle_scene = preload("res://Scenes/Levels/Battle.tscn").instance()
-		player.position = Vector2(0, 0)
+		prev_player_position = player.position
 		BattleGlobals.friendlies.append(player)
 		BattleGlobals.world_scene = get_tree().get_root()
 		add_child(battle_scene)
@@ -60,30 +59,36 @@ func start_combat_if_possible():
 		prepare_combatant(combatant, "Enemies")
 		player.get_node("CollisionShape2D").disabled = true
 		player.can_move = false
-		# _list = [player, combatant]
-		for curr in [player, combatant]:
-			#curr.initiative = rng.randi_range(1, 20)
-			curr.add_child(preload("res://Scenes/Particles/BloodParticles.tscn").instance())
-		#combatant_list.sort_custom(self, "sortCombatantsByInitiative")
+		
+func end_combat():
+	unprepare_combatant(player, "Friendlies")
+	unprepare_combatant(combatant, "Enemies")
+	player.position = prev_player_position
+	battle_scene.queue_free()
+	battle_scene = null
+	in_combat = false
+	player.get_node("Camera2D").current = true
+	player.get_node("CollisionShape2D").disabled = false
+	player.can_move = true
 
 func handle_combat_if_in_combat():
 	if in_combat:
 		if turn == "player":
+			if combatant == null:
+				end_combat()
+				return
 			if Input.is_action_just_pressed("ui_accept"):
-				timer = Timer.new()
-				timer.set_wait_time(0.5)
-				timer.autostart = true
-				self.add_child(timer)
-				timer.start()
-				battle_scene.get_node("EnemiesLabel").text = player.make_turn(combatant)
+				attack_time = OS.get_unix_time()
+				var status = player.make_turn(combatant)
+				battle_scene.get_node("EnemiesLabel").text = status
+				if "dead" in status.to_lower():
+					combatant = null
 				turn = "combatant"
 		elif turn == "combatant":
-			turn = ""
-			yield(timer, "timeout")
-			timer.queue_free()
-
-			battle_scene.get_node("FriendliesLabel").text = combatant.make_turn(player)
-			turn = "player"
+			if attack_time + 0.2 < OS.get_unix_time():
+				if combatant != null and battle_scene != null and in_combat:
+					battle_scene.get_node("FriendliesLabel").text = combatant.make_turn(player)
+				turn = "player"
 
 func _process(delta):
 	start_combat_if_possible()

@@ -47,10 +47,10 @@ position = Vector2( 558.461, 312.208 )
 position = Vector2( 472, 401.317 )
 
 [node name="HPBar" parent="Navigation2D/Trees/Player" instance=ExtResource( 6 )]
-margin_left = -13.6187
-margin_top = -10.0605
-margin_right = -13.6187
-margin_bottom = -10.0605
+margin_left = -12.6187
+margin_top = -15.0605
+margin_right = -12.6187
+margin_bottom = -15.0605
 
 [node name="Combatant2" parent="Navigation2D/Trees" instance=ExtResource( 5 )]
 position = Vector2( 535.931, 206.95 )

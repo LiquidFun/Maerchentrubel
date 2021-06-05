@@ -1,7 +1,7 @@
 extends Node
 export var hit_points = 100
 export var turn_speed = 1
-export var attack_damage_range = 6
+export var attack_damage_range = 10
 export var attack_range = 1
 export var aggro_range = 5
 export var armor = 5
@@ -22,7 +22,7 @@ func make_turn(target):
 func make_attack(target):
 	print(self.name +" makes attack against " +str(target.name))
 	var to_hit = rng.randi_range(1,20)
-	var damage = rng.randi_range(1,attack_damage_range)
+	var damage = rng.randi_range(3,attack_damage_range)
 	return target.receive_attack(to_hit, damage)
 	
 func receive_attack(to_hit, damage):
@@ -30,10 +30,13 @@ func receive_attack(to_hit, damage):
 	if to_hit >= armor:
 		self.hit_points -= damage
 		emit_signal("health_changed", hit_points)
-		$Blood.set_emitting(true)
+		var blood = preload("res://Scenes/Particles/BloodParticles.tscn").instance()
+		add_child(blood)
+		blood.set_emitting(true)
+		status = str(damage / 10.0) + " damage"
 		if self.hit_points <= 0:
 			self.die()
-		status = str(damage) + " damage"
+			status = "is dead"
 		print(self.name + " receives " + status)
 	else:
 		status = "miss"

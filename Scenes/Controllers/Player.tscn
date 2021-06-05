@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Other/player_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Objects/Light.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Particles/BloodParticles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Particles/FootDustParticles.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.23195
@@ -14,13 +15,15 @@ radius = 3.23195
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0.0579433, 9.43454 )
+position = Vector2( 0.0579433, 4.43454 )
 frames = ExtResource( 1 )
 animation = "idle"
 offset = Vector2( 0, -5 )
 
+[node name="Light" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0.0138361, -0.735676 )
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 0, 8 )
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -29,18 +32,19 @@ width = 5.0
 default_color = Color( 0.647059, 0.239216, 0.239216, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -1.78814e-07, 4.19617e-05 )
+position = Vector2( 0.140308, 6.75266 )
 current = true
 zoom = Vector2( 0.2, 0.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.905954, 9.48975 )
+position = Vector2( 0.555185, 4.29836 )
 shape = SubResource( 1 )
-
-[node name="Light" parent="." instance=ExtResource( 3 )]
-position = Vector2( -0.353546, 0.353554 )
 
 [node name="Blood" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0.54567, 6.10157 )
+
+[node name="FootDust" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0.739109, 6.90406 )
+lifetime = 0.5
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

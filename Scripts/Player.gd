@@ -64,8 +64,10 @@ func move(velocity):
 				
 		if velocity.length() > 0:
 			animated_sprite.play("walking_basket")
+			$FootDust.emitting = true
 		else:
 			animated_sprite.play("idle")
+			$FootDust.emitting = false
 		if velocity.x < 0:
 			animated_sprite.flip_h = true
 		if velocity.x > 0:
@@ -73,6 +75,7 @@ func move(velocity):
 
 func make_turn(target):
 	animated_sprite.play("idle")
+	$FootDust.emitting = false
 	return make_attack(target)
 
 func make_attack(target):
@@ -87,10 +90,13 @@ func receive_attack(to_hit, damage):
 	if to_hit >= armor:
 		self.hit_points -= damage
 		emit_signal("health_changed", hit_points)
-		$Blood.set_emitting(true)
+		var blood = preload("res://Scenes/Particles/BloodParticles.tscn").instance()
+		add_child(blood)
+		blood.set_emitting(true)
+		status = str(damage / 10.0) + " damage"
 		if self.hit_points <= 0:
 			self.die()
-		status = str(damage) + " damage"
+			status = "is dead"
 		print(self.name + " receives " + status)
 	else:
 		status = "miss"
