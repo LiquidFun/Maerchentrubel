@@ -15,6 +15,7 @@ func _on_Button_body_entered(body):
 		$Timer.stop()
 	$AnimatedSprite.animation = "on"
 	self.state = 0
+	AudioManager.play("res://Resources/Sound/Sfx/click.ogg")
 	gate.button_changed()
 	
 func _on_Button_body_exited(body):
@@ -27,4 +28,5 @@ func _on_Timer_timeout():
 	$Timer.stop()
 	$AnimatedSprite.animation = "off"
 	self.state = 1
+	AudioManager.play("res://Resources/Sound/Sfx/click.ogg")
 	gate.button_changed()

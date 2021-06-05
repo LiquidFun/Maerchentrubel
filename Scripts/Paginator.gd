@@ -17,6 +17,7 @@ var cycle = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true)
 	pass # Replace with function body.
 
 
@@ -27,7 +28,9 @@ func _ready():
 
 func _on_Next_button_up():
 	if current_pos >= max_cycle:
+		AudioManager.play("res://Resources/Sound/Sfx/click.ogg")
 		return
+	AudioManager.play("res://Resources/Sound/Sfx/page_new.ogg")
 	current_pos += 1
 	for p in cycle[current_pos]:
 		get_node(p).show()
@@ -36,7 +39,9 @@ func _on_Next_button_up():
 
 func _on_Previous_button_up():
 	if current_pos <= 1:
+		AudioManager.play("res://Resources/Sound/Sfx/click.ogg")
 		return
+	AudioManager.play("res://Resources/Sound/Sfx/page_new.ogg")
 	for p in cycle[current_pos]:
 		get_node(p).hide()
 	current_pos -= 1

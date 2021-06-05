@@ -9,12 +9,18 @@ var music_player = null
 
 func play(file_path, volume=-30):
 	if music_on:
-		var audio_player = AudioStreamPlayer.new()
+		#var audio_player = AudioStreamPlayer.new()
+		#
+		#self.add_child(audio_player)
+		#audio_player.stream = load(file_path)
+		#audio_player.volume_db = clamp(volume + volume_modifier, -80, 0)
+		#audio_player.play()
+		music_player = AudioStreamPlayer.new()
 		
-		self.add_child(audio_player)
-		audio_player.stream = load(file_path)
-		audio_player.volume_db = clamp(volume + volume_modifier, -80, 0)
-		audio_player.play()
+		self.add_child(music_player)
+		music_player.stream = load(file_path)
+		music_player.volume_db = clamp(volume + volume_modifier, -80, 0)
+		music_player.play()
 
 func toogle_music():
 	music_on = not music_on

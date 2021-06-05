@@ -22,6 +22,9 @@ config/icon="res://icon.png"
 
 SoundManager="*res://Scenes/Controllers/SoundManager.tscn"
 BattleGlobals="*res://Scripts/BattleGlobals.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
+ShuffleAudioPlayer="*res://Scripts/ShuffleAudioPlayer.gd"
+ForestAmbienceAudioPlayer="*res://Scripts/ForestAmbienceAudioPlayer.gd"
 
 [display]
 

@@ -83,6 +83,7 @@ func make_attack(target):
 	var to_hit = rng.randi_range(1, 20)
 	var damage = rng.randi_range(1, attack_damage_range)
 	animated_sprite.play("attack_basket")
+	AudioManager.play("res://Resources/Sound/Sfx/basket_punch.ogg")
 	return target.receive_attack(to_hit, damage)
 
 func receive_attack(to_hit, damage):

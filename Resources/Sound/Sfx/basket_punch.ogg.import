@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/basket_punch.ogg-b42d4b332551965dd6e5e1a3883a9525.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Sfx/basket_punch.ogg"
+dest_files=[ "res://.import/basket_punch.ogg-b42d4b332551965dd6e5e1a3883a9525.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

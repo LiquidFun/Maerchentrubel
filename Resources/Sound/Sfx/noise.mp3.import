@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/noise.mp3-0c39b43dc31ee05d6f7d69dca634d41a.mp3str"
+
+[deps]
+
+source_file="res://Resources/Sound/Sfx/noise.mp3"
+dest_files=[ "res://.import/noise.mp3-0c39b43dc31ee05d6f7d69dca634d41a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
