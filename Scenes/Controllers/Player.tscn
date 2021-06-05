@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/Other/player_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Objects/Light.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Particles/BloodParticles.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.23195
@@ -15,7 +16,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0579433, 9.43454 )
 frames = ExtResource( 1 )
-animation = "attack_basket"
+animation = "idle"
 offset = Vector2( 0, -5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -38,5 +39,8 @@ shape = SubResource( 1 )
 
 [node name="Light" parent="." instance=ExtResource( 3 )]
 position = Vector2( -0.353546, 0.353554 )
+
+[node name="Blood" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0.54567, 6.10157 )
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

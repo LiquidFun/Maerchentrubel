@@ -7,6 +7,7 @@ export var attack_damage_range = 20
 export var armor = 15
 export var hit_points = 100
 export var speed = 3000
+export var can_move = true
 
 onready var nav = get_parent().get_parent()
 
@@ -55,39 +56,46 @@ func _on_Tween_tween_completed(object, key):
 	
 func move(velocity):
 	# apply movement and detect collision
-	if velocity.length() > 1:
-		velocity = velocity.normalized()
-	velocity *= speed * get_process_delta_time()
-	self.move_and_slide(velocity, Vector2.UP)
-			
-	if velocity.length() > 0:
-		animated_sprite.play("walking_basket")
-	else:
-		animated_sprite.play("idle_basket")
-	if velocity.x < 0:
-		animated_sprite.flip_h = true
-	if velocity.x > 0:
-		animated_sprite.flip_h = false
+	if can_move:
+		if velocity.length() > 1:
+			velocity = velocity.normalized()
+		velocity *= speed * get_process_delta_time()
+		self.move_and_slide(velocity, Vector2.UP)
+				
+		if velocity.length() > 0:
+			animated_sprite.play("walking_basket")
+		else:
+			animated_sprite.play("idle")
+		if velocity.x < 0:
+			animated_sprite.flip_h = true
+		if velocity.x > 0:
+			animated_sprite.flip_h = false
 
-func make_turn():
-	pass
+func make_turn(target):
+	animated_sprite.play("idle")
+	return make_attack(target)
 
 func make_attack(target):
 	print("make_attack")
-	var to_hit = rng.randi_range(1,20)
-	var damage = rng.randi_range(1,attack_damage_range)
-	target.receive_attack(to_hit, damage)
+	var to_hit = rng.randi_range(1, 20)
+	var damage = rng.randi_range(1, attack_damage_range)
 	animated_sprite.play("attack_basket")
+	return target.receive_attack(to_hit, damage)
 
 func receive_attack(to_hit, damage):
+	var status
 	if to_hit >= armor:
 		self.hit_points -= damage
 		emit_signal("health_changed", hit_points)
+		$Blood.set_emitting(true)
 		if self.hit_points <= 0:
 			self.die()
-		print(self.name +" receives " +str(damage) +" damage")
+		status = str(damage) + " damage"
+		print(self.name + " receives " + status)
 	else:
-		print("miss")
+		status = "miss"
+	print(status)
+	return status
 
 func die():
 	self.queue_free()

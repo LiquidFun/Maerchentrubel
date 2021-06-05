@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Combatant.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/wolf.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/UI/HPBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Particles/BloodParticles.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -30,3 +32,14 @@ shape = SubResource( 2 )
 position = Vector2( 0, 8 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="HPBar" parent="." instance=ExtResource( 3 )]
+margin_left = -11.1244
+margin_top = -27.2812
+margin_right = -11.1244
+margin_bottom = -27.2812
+
+[node name="Blood" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2.64865, -0.794598 )
+
+[connection signal="health_changed" from="." to="HPBar" method="_on_Player_health_changed"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Resources/Sprites/battle_background.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Battle.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Fonts/ChiKareGo.tres" type="DynamicFont" id=3]
 
-[node name="Battle" type="Node"]
+[node name="Battle" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1025.0
@@ -17,3 +20,37 @@ __meta__ = {
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, -7.62939e-06 )
 anchor_mode = 0
+
+[node name="Friendlies" type="Node2D" parent="."]
+position = Vector2( 226.53, 462.498 )
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2( 773.977, 466.274 )
+
+[node name="FriendliesLabel" type="Label" parent="."]
+margin_left = 140.0
+margin_top = 302.0
+margin_right = 317.0
+margin_bottom = 353.0
+custom_fonts/font = ExtResource( 3 )
+text = "test"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesLabel" type="Label" parent="."]
+margin_left = 682.0
+margin_top = 306.0
+margin_right = 859.0
+margin_bottom = 357.0
+custom_fonts/font = ExtResource( 3 )
+text = "test"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

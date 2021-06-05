@@ -39,7 +39,6 @@ margin_bottom = -10.0605
 
 [node name="Combatant2" parent="Navigation2D/Trees" instance=ExtResource( 5 )]
 position = Vector2( 535.931, 206.95 )
-hit_points = 888
 
 [node name="Combatant" parent="Navigation2D/Trees" instance=ExtResource( 5 )]
 position = Vector2( 762.988, 301.723 )
