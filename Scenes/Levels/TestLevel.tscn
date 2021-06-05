@@ -63,5 +63,3 @@ position = Vector2( 610.073, 309.982 )
 teleport_location = Vector2( 472, 402 )
 
 [node name="CombatManager" parent="." instance=ExtResource( 4 )]
-
-[connection signal="health_changed" from="Navigation2D/Trees/Player" to="Navigation2D/Trees/Player/HPBar" method="_on_Player_health_changed"]

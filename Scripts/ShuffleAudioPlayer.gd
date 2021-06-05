@@ -24,7 +24,7 @@ func _on_stream_finished(p):
 	
 func play():
 	stopped = false
-	var i = rng.randi_range(0,len(sounds) - 1)
+	var i = rng.randi_range(0, len(sounds) - 1)
 	var p = AudioManager.play(sounds[i])
 	p.connect("finished", self, "_on_stream_finished", [p])
 
