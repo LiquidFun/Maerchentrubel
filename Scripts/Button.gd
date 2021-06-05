@@ -1,23 +1,30 @@
 extends Area2D
 
+export var button_timer = 10
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var state = 1
+var gate
+var pressing = 0
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	gate = get_parent().get_parent()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_Button_area_entered(area):
+func _on_Button_body_entered(body):
+	pressing +=1
+	if not $Timer.is_stopped():
+		$Timer.stop()
 	$AnimatedSprite.animation = "on"
+	self.state = 0
+	gate.button_changed()
 	
-func _on_Button_area_exited(area):
+func _on_Button_body_exited(body):
+	pressing -= 1
+	if pressing == 0:
+		$Timer.wait_time = button_timer
+		$Timer.start()
+
+func _on_Timer_timeout():
+	$Timer.stop()
 	$AnimatedSprite.animation = "off"
+	self.state = 1
+	gate.button_changed()

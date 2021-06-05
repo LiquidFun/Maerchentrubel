@@ -39,7 +39,7 @@ func start_combat_if_possible():
 	if possible_combatant != null and not in_combat:
 		combatant = possible_combatant
 		in_combat = true
-		battle_scene = preload("res://Battle.tscn").instance()
+		battle_scene = preload("res://Scenes/Levels/Battle.tscn").instance()
 		player.position = Vector2(0, 0)
 		BattleGlobals.friendlies.append(player)
 		BattleGlobals.world_scene = get_tree().get_root()
