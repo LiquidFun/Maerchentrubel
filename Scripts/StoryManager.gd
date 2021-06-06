@@ -80,6 +80,7 @@ func _ready():
 	pass
 
 func play(key):
+	print("Playing ", playing, " key ", key, " preemt", preemt)
 	if playing == null:
 		_play(key)
 	elif preemt:
@@ -94,14 +95,19 @@ func _play(key):
 		audio = snippets[key]["random_set"][i]
 	else:
 		audio = snippets[key]["audio"]
+	print(key, " ", audio)
 	if "oneshot" in snippets[key]:
-		if not snippets[key]["oneshot"]:
-			return
-		else:
+		if snippets[key]["oneshot"]:
 			snippets[key]["oneshot"] = false
+		else:
+			playing = null
+			return
 	playing = AudioManager.play("res://Resources/Sound/Narrator/" + audio, false, -4)
+	playing.connect("finished", self, "_on_stream_finished")
 	preemt = snippets[key]["preemtible"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func _on_stream_finished():
+	playing = null

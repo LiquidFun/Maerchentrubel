@@ -296,7 +296,7 @@ position = Vector2( 1399, 724.126 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="Player" parent="Navigation2D/Trees" instance=ExtResource( 3 )]
-position = Vector2( 615.857, -365.953 )
+position = Vector2( 615.606, -362.203 )
 
 [node name="Light2D" parent="Navigation2D/Trees/Player/Light" index="1"]
 energy = 0.0
