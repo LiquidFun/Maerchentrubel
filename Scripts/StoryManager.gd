@@ -46,13 +46,14 @@ var snippets = {
 		"audio": "narrator_wolf50.ogg",
 		"preemtible": true 
 	},
-	"wolf_kampf_intro": { 
-		"audio": "narrator_wolf_kampf_intro.ogg",
-		"preemtible": true 
-	},
+	#"wolf_kampf_intro": { 
+	#	"audio": "narrator_wolf_kampf_intro.ogg",
+	#	"preemtible": true 
+	#},
 	"wolf_kampf_tutorial": { 
 		"audio": "narrator_wolf_kampf_tutorial_steine.ogg",
-		"preemtible": false 
+		"preemtible": false,
+		"oneshot": true
 	},
 	"wolf_tutorial_tot": { 
 		"audio": "narrator_wolf_tutorial_tot.ogg",
@@ -61,7 +62,7 @@ var snippets = {
 	},
 	"rotk_tot": { 
 		"audio": "narrator_rotK_tot.ogg",
-		"preemtible": false 
+		"preemtible": false
 	},
 	"teleporter_introduction": { 
 		"audio": "narrator_teleporter_introduction.ogg",
@@ -69,11 +70,13 @@ var snippets = {
 	},
 	"endkampf_cutscene": { 
 		"audio": "narrator_endkampf_cutscene.ogg",
-		"preemtible": false 
+		"preemtible": false,
+		"oneshot": true
 	},
 	"endkampf_start": { 
 		"audio": "narrator_endkampf_start.ogg",
-		"preemtible": false 
+		"preemtible": false,
+		"oneshot": true
 	},
 	"endkampf_wolf_50": { 
 		"audio": "narrator_endkampf_start.ogg",

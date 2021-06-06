@@ -324,7 +324,7 @@ attack_damage_range = 20
 plus_to_hit = 3
 
 [node name="Player" parent="Navigation2D/Trees" instance=ExtResource( 3 )]
-position = Vector2( 617.238, -365.875 )
+position = Vector2( 608.269, -390.179 )
 
 [node name="Light2D" parent="Navigation2D/Trees/Player/Light" index="1"]
 energy = 0.0
@@ -433,7 +433,7 @@ shape = SubResource( 2 )
 [node name="StoryTriggers" type="Node" parent="."]
 
 [node name="Node2D" parent="StoryTriggers" instance=ExtResource( 15 )]
-position = Vector2( 621.392, -350.271 )
+position = Vector2( 611.245, -378.351 )
 audio_key = "prolog"
 
 [node name="Node2D2" parent="StoryTriggers" instance=ExtResource( 15 )]
@@ -467,6 +467,14 @@ audio_key = "weg_zu_oma"
 [node name="Node2D10" parent="StoryTriggers" instance=ExtResource( 15 )]
 position = Vector2( 1787.76, 83.1711 )
 audio_key = "haus_großmutter"
+
+[node name="Node2D11" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 1906.26, -109.829 )
+audio_key = "endkampf_cutscene"
+
+[node name="Node2D12" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 1926.76, -109.329 )
+audio_key = "endkampf_cutscene"
 
 [connection signal="health_changed" from="Navigation2D/Trees/Player" to="Navigation2D/Trees/Player/HPBar" method="_on_Player_health_changed"]
 

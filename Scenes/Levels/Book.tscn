@@ -169,15 +169,25 @@ __meta__ = {
 }
 
 [node name="Page7" type="Sprite" parent="."]
-visible = false
 position = Vector2( -62, 4.19617e-05 )
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Label" type="Label" parent="Page7"]
+margin_left = -52.186
+margin_top = -47.0
+margin_right = 40.814
+margin_bottom = -33.0
+rect_rotation = -6.2
+custom_fonts/font = ExtResource( 8 )
+text = "Maerchentrubel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Page8" type="Sprite" parent="."]
-visible = false
 position = Vector2( 66, 0 )
 texture = ExtResource( 1 )
 __meta__ = {

@@ -55,7 +55,9 @@ func start_combat_if_possible():
 	if possible_combatant != null and not in_combat:
 		combatant = possible_combatant
 		if combatant.is_endboss:
-			StoryManager.play("")
+			StoryManager.play("endkampf_start")
+		else:
+			StoryManager.play("wolf_kampf_tutorial")
 		in_combat = true
 		first_cycle = true
 		stone_set_time = null
