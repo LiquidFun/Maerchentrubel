@@ -169,6 +169,7 @@ __meta__ = {
 }
 
 [node name="Page7" type="Sprite" parent="."]
+visible = false
 position = Vector2( -62, 4.19617e-05 )
 texture = ExtResource( 6 )
 __meta__ = {
@@ -188,6 +189,7 @@ __meta__ = {
 }
 
 [node name="Page8" type="Sprite" parent="."]
+visible = false
 position = Vector2( 66, 0 )
 texture = ExtResource( 1 )
 __meta__ = {
