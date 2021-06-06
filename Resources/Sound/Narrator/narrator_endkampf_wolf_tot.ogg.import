@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_endkampf_wolf_tot.ogg-44f5096e21827829c8a5db246fdf19fe.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_endkampf_wolf_tot.ogg"
+dest_files=[ "res://.import/narrator_endkampf_wolf_tot.ogg-44f5096e21827829c8a5db246fdf19fe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

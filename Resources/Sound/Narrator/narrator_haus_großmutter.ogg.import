@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_haus_großmutter.ogg-4298b296b8a21cc79a7d1145dffe8299.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_haus_großmutter.ogg"
+dest_files=[ "res://.import/narrator_haus_großmutter.ogg-4298b296b8a21cc79a7d1145dffe8299.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_gatter_raetsel_2.ogg-6c692f07ffd47116f1322217bf7863b1.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_gatter_raetsel_2.ogg"
+dest_files=[ "res://.import/narrator_gatter_raetsel_2.ogg-6c692f07ffd47116f1322217bf7863b1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
