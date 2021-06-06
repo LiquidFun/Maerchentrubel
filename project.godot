@@ -25,6 +25,7 @@ BattleGlobals="*res://Scripts/BattleGlobals.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 ShuffleAudioPlayer="*res://Scripts/ShuffleAudioPlayer.gd"
 ForestAmbienceAudioPlayer="*res://Scripts/ForestAmbienceAudioPlayer.gd"
+StoryManager="*res://Scripts/StoryManager.gd"
 
 [display]
 

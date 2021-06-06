@@ -35,7 +35,7 @@ func play(sound_path, loop=false, volume=-10):
 	p.play()
 	return p
 
-func _process(delta):
+#func _process(delta):
 	# Play a queued sound if any players are available.
 	#if not queue.empty() and not available.empty():
 	#	var front = queue.pop_front()
@@ -43,4 +43,4 @@ func _process(delta):
 	#	if not front["loop"]:
 	#		available[0].stream.set_loop(false)
 	#	available[0].play()
-	pass
+#	pass
