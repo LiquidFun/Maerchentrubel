@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_blockiert_schalter_mit_stein.ogg-439d930400fc2c948b4eb216fed58c89.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_blockiert_schalter_mit_stein.ogg"
+dest_files=[ "res://.import/narrator_blockiert_schalter_mit_stein.ogg-439d930400fc2c948b4eb216fed58c89.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

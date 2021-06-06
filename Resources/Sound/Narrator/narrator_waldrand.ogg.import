@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_waldrand.ogg-0be88ca673deffa7898384aaf9dee2d7.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_waldrand.ogg"
+dest_files=[ "res://.import/narrator_waldrand.ogg-0be88ca673deffa7898384aaf9dee2d7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

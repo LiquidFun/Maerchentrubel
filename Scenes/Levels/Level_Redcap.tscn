@@ -328,8 +328,10 @@ rotation = -9.1e-05
 
 [node name="Teleporters" type="Node" parent="."]
 
-[node name="TeleporterEncounter1" type="Node" parent="Teleporters"]
+[node name="TeleporterEncounter1" type="Node2D" parent="Teleporters"]
+position = Vector2( 5, -4 )
 script = ExtResource( 11 )
+teleport_coordinates = Vector2( 1056, 520 )
 
 [node name="Teleporter16" parent="Teleporters/TeleporterEncounter1" instance=ExtResource( 10 )]
 position = Vector2( 1063.46, 981.108 )

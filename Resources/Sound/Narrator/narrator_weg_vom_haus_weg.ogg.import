@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_weg_vom_haus_weg.ogg-bee74bc8af7edbe416873e3a354b33b4.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_weg_vom_haus_weg.ogg"
+dest_files=[ "res://.import/narrator_weg_vom_haus_weg.ogg-bee74bc8af7edbe416873e3a354b33b4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
