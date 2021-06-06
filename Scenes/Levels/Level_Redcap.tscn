@@ -294,9 +294,11 @@ scale = Vector2( 0.6, 0.6 )
 [node name="Combatant3" parent="Navigation2D/Trees" instance=ExtResource( 5 )]
 position = Vector2( 1399, 724.126 )
 scale = Vector2( 0.6, 0.6 )
+attack_damage_range = 20
+plus_to_hit = 3
 
 [node name="Player" parent="Navigation2D/Trees" instance=ExtResource( 3 )]
-position = Vector2( 615.606, -362.203 )
+position = Vector2( 616.535, -367.6 )
 
 [node name="Light2D" parent="Navigation2D/Trees/Player/Light" index="1"]
 energy = 0.0
@@ -405,20 +407,20 @@ shape = SubResource( 2 )
 [node name="StoryTriggers" type="Node" parent="."]
 
 [node name="Node2D" parent="StoryTriggers" instance=ExtResource( 15 )]
-position = Vector2( 621.079, -349.086 )
+position = Vector2( 621.392, -350.271 )
 audio_key = "prolog"
 
 [node name="Node2D2" parent="StoryTriggers" instance=ExtResource( 15 )]
 position = Vector2( 620.467, -219.733 )
 audio_key = "weg_vom_haus"
 
-[node name="Node2D3" parent="StoryTriggers" instance=ExtResource( 15 )]
-position = Vector2( 619.873, -148.063 )
-audio_key = "tritt_an_tor"
-
 [node name="Node2D4" parent="StoryTriggers" instance=ExtResource( 15 )]
 position = Vector2( 991.214, 482.318 )
 audio_key = "teleporter_introduction"
+
+[node name="Node2D5" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 635.316, 89.9798 )
+audio_key = "waldrand"
 
 [connection signal="health_changed" from="Navigation2D/Trees/Player" to="Navigation2D/Trees/Player/HPBar" method="_on_Player_health_changed"]
 

@@ -10,6 +10,8 @@ var in_combat = false
 export var initiative = 0
 var rng = RandomNumberGenerator.new()
 
+var has_reached_50 = false
+
 signal health_changed
 
 # Called when the node enters the scene tree for the first time.
@@ -47,6 +49,9 @@ func receive_attack(to_hit, damage):
 	else:
 		status = "Verfehlt!"
 	print(status)
+	if self.hit_points <= 50 and not has_reached_50:
+		StoryManager.play("wolf50")
+		has_reached_50 = true
 	return status
 
 func die():

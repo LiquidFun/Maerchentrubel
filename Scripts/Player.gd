@@ -30,6 +30,8 @@ var inputs = {
 	"ui_right": Vector2(1, 0),
 }
 
+var has_reached_50 = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
@@ -94,6 +96,7 @@ func make_attack(target):
 	
 func heal():
 	hit_points = 100
+	has_reached_50 = false
 	emit_signal("health_changed", hit_points)
 
 func receive_attack(to_hit, damage):
@@ -110,11 +113,15 @@ func receive_attack(to_hit, damage):
 			death.position = self.position
 			death.set_emitting(true)
 			status = "Ist tot!"
+			StoryManager.play("rotk_tot")
 			get_tree().change_scene("res://Scenes/Levels/Level_Redcap.tscn")
 		print(self.name + " receives " + status)
 	else:
 		status = "Verfehlt!"
 	print(status)
+	if hit_points <= 50 and not has_reached_50:
+		StoryManager.play("rotk50")
+		has_reached_50 = true
 	return status
 
 func die():

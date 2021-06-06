@@ -15,9 +15,11 @@ var cycle = {
 	4: [@"Page7", @"Page8"]
 }
 
+var music = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true, -5)
+	music = AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true, -5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -42,3 +44,8 @@ func _on_Previous_button_up():
 	for p in cycle[current_pos]:
 		get_node(p).hide()
 	current_pos -= 1
+
+
+func _on_Button_button_up():
+	music.stop()
+	get_tree().change_scene("res://Scenes/Levels/Level_Redcap.tscn")

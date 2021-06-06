@@ -12,6 +12,8 @@ var previous = -1
 
 var stopped = false
 
+var cp = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
@@ -33,9 +35,11 @@ func play():
 	previous = i
 	var p = AudioManager.play(sounds[i], false, -12)
 	p.connect("finished", self, "_on_stream_finished", [p])
+	cp = p
 
 func stop():
-	stopped = true
+	#stopped = true
+	cp.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

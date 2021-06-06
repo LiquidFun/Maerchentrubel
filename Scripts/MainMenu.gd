@@ -22,8 +22,8 @@ func _on_tween_completed():
 #	pass
 
 func _on_Button_button_up():
-	$Tween.interpolate_property(music, "volume_db", music.volume_db, -80, 6.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	$Tween.interpolate_property($ColorRect, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 4.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(music, "volume_db", music.volume_db, -80, 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($ColorRect, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
 

@@ -8,16 +8,18 @@ extends Node
 var snippets = {
 	"prolog": {
 		"audio": "narrator_prolog.ogg",
-		"preemtible": false 
+		"preemtible": false,
+		"oneshot": true
 	},
 	"waldrand": { 
 		"audio": "narrator_waldrand.ogg",
-		"preemtible": false 
+		"preemtible": false,
+		"oneshot": true
 	},
 	"blockiert_schalter": {
 		"audio": "narrator_blockiert_schalter_mit_stein.ogg",
 		"preemtible": true,
-		"oneshot": true 
+		"oneshot": true
 	},
 	"tritt_an_tor": {
 		"audio": "narrator_tritt_an_tor_heran.ogg",
@@ -35,12 +37,12 @@ var snippets = {
 		"oneshot": true 
 	},
 	"rotk50": { 
-		"audio": "narrator_rotk50.ogg",
-		"preemtible": false 
+		"audio": "narrator_rotK50.ogg",
+		"preemtible": true 
 	},
 	"wolf50": { 
 		"audio": "narrator_wolf50.ogg",
-		"preemtible": false 
+		"preemtible": true 
 	},
 	"wolf_kampf_intro": { 
 		"audio": "narrator_wolf_kampf_intro.ogg",
@@ -52,6 +54,11 @@ var snippets = {
 	},
 	"wolf_tot": { 
 		"audio": "narrator_wolf_tutorial_tot.ogg",
+		"preemtible": false,
+		"oneshot": true
+	},
+	"rotk_tot": { 
+		"audio": "narrator_rotK_tot.ogg",
 		"preemtible": false 
 	},
 	"teleporter_introduction": { 
@@ -81,10 +88,9 @@ func _ready():
 
 func play(key):
 	print("Playing ", playing, " key ", key, " preemt", preemt)
-	if playing == null:
+	if playing == null or playing.is_playing():
 		_play(key)
 	elif preemt:
-		playing.stop()
 		_play(key)
 		
 
@@ -102,12 +108,12 @@ func _play(key):
 		else:
 			playing = null
 			return
+	if playing != null:
+		playing.stop()
+		playing = null
 	playing = AudioManager.play("res://Resources/Sound/Narrator/" + audio, false, -4)
-	playing.connect("finished", self, "_on_stream_finished")
 	preemt = snippets[key]["preemtible"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _on_stream_finished():
-	playing = null

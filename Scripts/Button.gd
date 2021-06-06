@@ -33,4 +33,5 @@ func _on_Timer_timeout():
 	$AnimatedSprite.animation = "off"
 	self.state = 1
 	AudioManager.play("res://Resources/Sound/Sfx/click.ogg")
+	StoryManager.play("tritt_an_tor")
 	gate.button_changed()
