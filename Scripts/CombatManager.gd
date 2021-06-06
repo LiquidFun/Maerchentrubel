@@ -54,6 +54,8 @@ func start_combat_if_possible():
 	var possible_combatant = get_combatant_if_exists()
 	if possible_combatant != null and not in_combat:
 		combatant = possible_combatant
+		if combatant.is_endboss:
+			StoryManager.play("")
 		in_combat = true
 		first_cycle = true
 		stone_set_time = null

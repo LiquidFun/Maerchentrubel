@@ -51,12 +51,16 @@ func receive_attack(to_hit, damage):
 		status = "Verfehlt!"
 	print(status)
 	if self.hit_points <= 50 and not has_reached_50:
-		StoryManager.play("wolf50")
+		if is_endboss:
+			StoryManager.play("endkampf_wolf_50")
+		else:	
+			StoryManager.play("wolf50")
 		has_reached_50 = true
 	return status
 
 func die():
 	if is_endboss:
+		StoryManager.play("endkampf_wolf_tot")
 		var grandma = preload("res://Scenes/Controllers/Grandma.tscn").instance()
 		grandma.position = get_parent().get_node("SpawnGrandma").position
 		get_parent().add_child(grandma)
@@ -66,5 +70,7 @@ func die():
 		hunter.position.x += 20
 		print(hunter, grandma)
 		get_parent().add_child(hunter)
+	else:
+		StoryManager.play("wolf_tutorial_tot")
 	self.queue_free()
 
