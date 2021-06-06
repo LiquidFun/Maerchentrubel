@@ -61,6 +61,11 @@ func move(velocity, delta):
 			velocity = velocity.normalized()
 		velocity *= speed * delta
 		self.move_and_slide(velocity, Vector2.UP)
+		
+		for index in get_slide_count():
+			var collision = get_slide_collision(index)
+			if collision.collider.is_in_group("movable"):
+				collision.collider.move_and_slide(-collision.normal * 10)
 				
 		if velocity.length() > 0:
 			animated_sprite.play("walking_basket")

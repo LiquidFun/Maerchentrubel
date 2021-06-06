@@ -3,7 +3,7 @@ extends KinematicBody2D
 var speed
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = 500000
+	speed = 5000000
 
 func _process(delta):
 	var velocity = Vector2(0,0)
