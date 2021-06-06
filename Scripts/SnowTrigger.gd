@@ -17,5 +17,6 @@ func dist(p1, p2):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if dist(player, self) < 20:
-		player.get_node("Snow").amount = snow_particles_amount
-		player.get_node("Snow").set_emitting(true)
+		if player.get_node("Snow").amount != snow_particles_amount:
+			player.get_node("Snow").amount = snow_particles_amount
+			player.get_node("Snow").set_emitting(true)
