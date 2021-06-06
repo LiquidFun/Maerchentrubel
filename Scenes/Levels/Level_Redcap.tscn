@@ -324,7 +324,7 @@ attack_damage_range = 20
 plus_to_hit = 3
 
 [node name="Player" parent="Navigation2D/Trees" instance=ExtResource( 3 )]
-position = Vector2( 609.086, -390.82 )
+position = Vector2( 608.269, -390.179 )
 
 [node name="Light2D" parent="Navigation2D/Trees/Player/Light" index="1"]
 energy = 0.0

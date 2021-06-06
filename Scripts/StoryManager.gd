@@ -10,12 +10,12 @@ var is_tutorial = true
 var snippets = {
 	"prolog": {
 		"audio": "narrator_prolog.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"waldrand": { 
 		"audio": "narrator_waldrand.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"blockiert_schalter": {
@@ -62,29 +62,29 @@ var snippets = {
 	},
 	"rotk_tot": { 
 		"audio": "narrator_rotK_tot.ogg",
-		"preemtible": false
+		"preemtible": true
 	},
 	"teleporter_introduction": { 
 		"audio": "narrator_teleporter_introduction.ogg",
-		"preemtible": false 
+		"preemtible": true 
 	},
 	"endkampf_cutscene": { 
 		"audio": "narrator_endkampf_cutscene.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"endkampf_start": { 
 		"audio": "narrator_endkampf_start.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"endkampf_wolf_50": { 
 		"audio": "narrator_endkampf_start.ogg",
-		"preemtible": false 
+		"preemtible": true 
 	},
 	"endkampf_wolf_tot": { 
 		"audio": "narrator_endkampf_wolf_tot.ogg",
-		"preemtible": false 
+		"preemtible": true 
 	},
 	"gatter_raetsel_1": { 
 		"audio": "narrator_gatter_raetsel_1.ogg",
@@ -103,7 +103,7 @@ var snippets = {
 	},
 	"haus_großmutter": { 
 		"audio": "narrator_haus_großmutter.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"weg_zu_oma": { 
@@ -139,7 +139,7 @@ func _ready():
 
 func play(key):
 	print("Playing ", playing, " key ", key, " preemt", preemt)
-	if playing == null or playing.is_playing():
+	if playing == null or not playing.is_playing():
 		_play(key)
 	elif preemt:
 		_play(key)
