@@ -9,6 +9,7 @@ export var plus_to_hit = 0
 var in_combat = false
 export var initiative = 0
 var rng = RandomNumberGenerator.new()
+export var is_endboss = false
 
 var has_reached_50 = false
 
@@ -55,5 +56,15 @@ func receive_attack(to_hit, damage):
 	return status
 
 func die():
+	if is_endboss:
+		var grandma = preload("res://Scenes/Controllers/Grandma.tscn").instance()
+		grandma.position = get_parent().get_node("SpawnGrandma").position
+		get_parent().add_child(grandma)
+
+		var hunter = preload("res://Scenes/Controllers/Hunter.tscn").instance()
+		hunter.position = get_parent().get_node("SpawnHunter").position
+		hunter.position.x += 20
+		print(hunter, grandma)
+		get_parent().add_child(hunter)
 	self.queue_free()
 
