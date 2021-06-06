@@ -112,7 +112,7 @@ var snippets = {
 		"oneshot": true
 	},
 	"healing_potion": { 
-		"audio": "narrator_on_healing_potion_pickup.ogg",
+		"audio": "narrator_on_healing_potion_pick_up.ogg",
 		"preemtible": true,
 		"oneshot": true
 	},
