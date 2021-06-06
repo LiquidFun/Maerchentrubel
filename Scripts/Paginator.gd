@@ -17,9 +17,7 @@ var cycle = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true)
-	pass # Replace with function body.
-
+	AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true, -5)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -34,7 +32,6 @@ func _on_Next_button_up():
 	current_pos += 1
 	for p in cycle[current_pos]:
 		get_node(p).show()
-	pass # Replace with function body.
 
 
 func _on_Previous_button_up():
@@ -45,4 +42,3 @@ func _on_Previous_button_up():
 	for p in cycle[current_pos]:
 		get_node(p).hide()
 	current_pos -= 1
-	pass # Replace with function body.

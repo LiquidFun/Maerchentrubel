@@ -9,13 +9,23 @@ var music = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	music = AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true)
+	music = AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true, -1)
+	$Tween.connect("tween_all_completed", self, "_on_tween_completed")
+
+func _on_tween_completed():
+	music.stop()
+	AudioManager.play("res://Resources/Sound/Sfx/page_new.ogg")
+	get_tree().change_scene("res://Scenes/Levels/Book.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 func _on_Button_button_up():
-	music.stop()
-	AudioManager.play("res://Resources/Sound/Sfx/page_new.ogg")
-	get_tree().change_scene("res://Scenes/Book/book.tscn")
+	$Tween.interpolate_property(music, "volume_db", music.volume_db, -80, 6.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.interpolate_property($ColorRect, "color", Color(0, 0, 0, 0), Color(0, 0, 0, 1), 4.0, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+
+func _on_Button2_button_up():
+	get_tree().quit()
