@@ -12,7 +12,7 @@ var turn = "player"
 var attack_time = 0
 var prev_player_position
 var stone = null
-var stone_set_time
+var stone_set_time = null
 var first_cycle = true
 
 export var stone_press_time = 0.9
@@ -55,6 +55,8 @@ func start_combat_if_possible():
 	if possible_combatant != null and not in_combat:
 		combatant = possible_combatant
 		in_combat = true
+		first_cycle = true
+		stone_set_time = null
 		battle_scene = preload("res://Scenes/Levels/Battle.tscn").instance()
 		battle_scene.modulate = owner.modulate
 		prev_player_position = player.global_position
@@ -72,7 +74,6 @@ func end_combat():
 	battle_scene.queue_free()
 	battle_scene = null
 	in_combat = false
-	first_cycle = true
 	player.get_node("Camera2D").current = true
 	player.get_node("CollisionShape2D").disabled = false
 	player.can_move = true
