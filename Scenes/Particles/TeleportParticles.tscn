@@ -16,8 +16,10 @@ min_value = -1.0
 _data = [ Vector2( 0, 0.397727 ), 0.0, 0.0, 0, 0, Vector2( 1, -0.329545 ), 0.0, 0.0, 0, 0 ]
 
 [node name="Teleport" type="CPUParticles2D"]
+emitting = false
 amount = 200
 lifetime = 2.0
+one_shot = true
 explosiveness = 1.0
 local_coords = false
 direction = Vector2( 0, 0 )
@@ -30,7 +32,7 @@ radial_accel = 100.0
 damping = 100.0
 damping_random = 0.08
 damping_curve = SubResource( 1 )
-scale_amount = 7.0
+scale_amount = 5.0
 scale_amount_random = 0.41
 scale_amount_curve = SubResource( 2 )
 color_ramp = SubResource( 3 )

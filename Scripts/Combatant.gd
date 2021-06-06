@@ -1,11 +1,12 @@
 extends Node
 export var hit_points = 100
 export var turn_speed = 1
-export var attack_damage_range = 10
+export var attack_damage_range = 15
 export var attack_range = 1
 export var aggro_range = 5
 export var armor = 5
-export var in_combat = false
+export var plus_to_hit = 0
+var in_combat = false
 export var initiative = 0
 var rng = RandomNumberGenerator.new()
 
@@ -21,7 +22,7 @@ func make_turn(target):
 	
 func make_attack(target):
 	print(self.name +" makes attack against " +str(target.name))
-	var to_hit = rng.randi_range(1,20)
+	var to_hit = rng.randi_range(1,20) + plus_to_hit
 	var damage = rng.randi_range(3,attack_damage_range)
 	return target.receive_attack(to_hit, damage)
 	

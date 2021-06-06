@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Combatant.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Sprites/wolf.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/HPBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Particles/BloodParticles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/Shadow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Light.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 resource_local_to_scene = true
@@ -20,6 +21,8 @@ extents = Vector2( 8, 8 )
 
 [node name="Combatant" type="Area2D"]
 script = ExtResource( 1 )
+
+[node name="Light" parent="." instance=ExtResource( 6 )]
 
 [node name="Shadow" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0.454948, 11.6569 )

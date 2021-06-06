@@ -67,7 +67,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 resource_name = "EnemiesShow"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("EnemiesLabel:rect_position:x")
@@ -217,7 +217,7 @@ tracks/3/keys = {
 }
 
 [node name="Battle2" type="Node2D"]
-position = Vector2( 0.445465, 8.90903 )
+position = Vector2( -4716.43, -2166.69 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1025.0
@@ -273,7 +273,7 @@ __meta__ = {
 anims/FriendliesShow = SubResource( 1 )
 
 [node name="EnemyAnimations" type="AnimationPlayer" parent="."]
-anims/EnemiesShow = SubResource( 2 )
+anims/EnemiesShow = SubResource( 5 )
 
 [node name="BL1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 343.565, 340.198 )
@@ -297,7 +297,6 @@ position = Vector2( 435.669, 542.426 )
 position = Vector2( 402.298, 590.48 )
 
 [node name="Tutorial" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 
 [node name="S1" type="Label" parent="Tutorial"]
 margin_left = 339.974

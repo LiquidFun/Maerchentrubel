@@ -15,7 +15,7 @@ var stone = null
 var stone_set_time
 var first_cycle = true
 
-export var stone_press_time = 1
+export var stone_press_time = 0.9
 export var enemy_attack_delay = 1
 export var after_enemy_attack_delay = 0.5
 
@@ -26,7 +26,7 @@ func _ready():
 	rng.randomize()
 	
 func prepare_combatant(combatant, as_type):
-	combatant.position = battle_scene.get_node(as_type).position
+	combatant.global_position = battle_scene.get_node(as_type).global_position
 	combatant.scale = Vector2(5, 5)
 	combatant.z_index = 1
 	var sprite = combatant.get_node("AnimatedSprite")
@@ -46,7 +46,7 @@ func dist(p1, p2):
 
 func get_combatant_if_exists():
 	for combatant in get_tree().get_nodes_in_group("combatant"):
-		if dist(player, combatant) < 12:
+		if dist(player, combatant) < 20:
 			return combatant
 	return null
 	
@@ -56,9 +56,8 @@ func start_combat_if_possible():
 		combatant = possible_combatant
 		in_combat = true
 		battle_scene = preload("res://Scenes/Levels/Battle.tscn").instance()
-		prev_player_position = player.position
-		BattleGlobals.friendlies.append(player)
-		BattleGlobals.world_scene = get_tree().get_root()
+		battle_scene.modulate = owner.modulate
+		prev_player_position = player.global_position
 		add_child(battle_scene)
 		battle_scene.get_node("Camera2D").current = true
 		prepare_combatant(player, "Friendlies")
@@ -69,7 +68,7 @@ func start_combat_if_possible():
 func end_combat():
 	unprepare_combatant(player, "Friendlies")
 	unprepare_combatant(combatant, "Enemies")
-	player.position = prev_player_position
+	player.global_position = prev_player_position
 	battle_scene.queue_free()
 	battle_scene = null
 	in_combat = false

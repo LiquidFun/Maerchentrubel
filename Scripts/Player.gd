@@ -8,6 +8,7 @@ export var armor = 15
 export var hit_points = 100
 export var speed = 3000
 export var can_move = true
+export var light_multiplier = 1
 
 onready var nav = get_parent().get_parent()
 
