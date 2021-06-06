@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_wolf_kampf_tutorial_steine.ogg-34dee27888c58618e058329d7001c55a.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_wolf_kampf_tutorial_steine.ogg"
+dest_files=[ "res://.import/narrator_wolf_kampf_tutorial_steine.ogg-34dee27888c58618e058329d7001c55a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

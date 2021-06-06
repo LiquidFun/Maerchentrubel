@@ -31,7 +31,7 @@ func play():
 		if i != previous:
 			break
 	previous = i
-	var p = AudioManager.play(sounds[i], -30)
+	var p = AudioManager.play(sounds[i], false, -12)
 	p.connect("finished", self, "_on_stream_finished", [p])
 
 func stop():

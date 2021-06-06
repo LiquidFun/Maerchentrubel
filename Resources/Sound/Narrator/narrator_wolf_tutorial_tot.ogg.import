@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/narrator_wolf_tutorial_tot.ogg-7382215c926222e21a2797d54320928e.oggstr"
+
+[deps]
+
+source_file="res://Resources/Sound/Narrator/narrator_wolf_tutorial_tot.ogg"
+dest_files=[ "res://.import/narrator_wolf_tutorial_tot.ogg-7382215c926222e21a2797d54320928e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

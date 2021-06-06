@@ -16,6 +16,10 @@ func _on_Button_body_entered(body):
 	$AnimatedSprite.animation = "on"
 	self.state = 0
 	AudioManager.play("res://Resources/Sound/Sfx/click.ogg")
+	if body.name == "Player":
+		StoryManager.play("tritt_auf_schalter")
+	elif "Obstacle" in body.name:
+		StoryManager.play("blockiert_schalter")
 	gate.button_changed()
 	
 func _on_Button_body_exited(body):

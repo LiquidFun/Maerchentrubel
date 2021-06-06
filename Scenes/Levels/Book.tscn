@@ -27,9 +27,20 @@ __meta__ = {
 }
 
 [node name="Page1" type="Sprite" parent="."]
-visible = false
 position = Vector2( -68, -1 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Page1"]
+margin_left = -45.0
+margin_top = -45.0
+margin_right = 44.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Page2" type="Sprite" parent="."]
 visible = false
@@ -37,16 +48,25 @@ position = Vector2( 68, 4.19617e-05 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Page3" type="Sprite" parent="."]
 visible = false
 position = Vector2( -66, 1 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Page4" type="Sprite" parent="."]
 visible = false
 position = Vector2( 66, 2 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Page5" type="Sprite" parent="."]
 visible = false
@@ -54,21 +74,33 @@ position = Vector2( 64, 4 )
 rotation = -3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Page6" type="Sprite" parent="."]
 visible = false
 position = Vector2( -64, 4 )
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Page7" type="Sprite" parent="."]
 visible = false
 position = Vector2( -62, 4.19617e-05 )
 texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Page8" type="Sprite" parent="."]
 visible = false
 position = Vector2( 66, 0 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Next" type="TextureButton" parent="."]
 margin_left = 130.0
