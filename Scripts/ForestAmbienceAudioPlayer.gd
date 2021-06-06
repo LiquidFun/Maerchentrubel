@@ -23,8 +23,7 @@ var noise = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	noise = AudioManager.play("res://Resources/Sound/Sfx/noise.mp3", -5)
-	pass # Replace with function body.
+	noise = AudioManager.play("res://Resources/Sound/Sfx/noise.ogg", 5)
 
 #func add_audio(sound):
 #	sounds.append(sound)

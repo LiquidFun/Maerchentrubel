@@ -6,8 +6,12 @@ extends Node
 # var b = "text"
 
 var snippets = {
-	"teleport": { "audio": "res://Resources/Sound/Music/background.ogg", "preemtible": true },
-	"prologue": { "audio": "res://Resources/Sound/Music/mainmenu.ogg", "preemtible": false },
+	"prolog": { "audio": "narrator_prolog.ogg", "preemtible": false },
+	"waldrand": { "audio": "narrator_waldrand.ogg", "preemtible": false },
+	"blockiert_schalter": { "audio": "narrator_blockiert_schalter_mit_stein.ogg", "preemtible": false },
+	"tritt_an_tor": { "audio": "narrator_tritt_an_tor_heran.ogg", "preemtible": false },
+	"tritt_auf_schalter": { "audio": "narrator_tritt_auf_schalter.ogg", "preemtible": true },
+	"weg_vom_haus": { "audio": "narrator_weg_vom_haus_weg.ogg", "preemtible": false }
 }
 
 var playing = null
@@ -19,11 +23,11 @@ func _ready():
 
 func play(key):
 	if playing == null:
-		playing = AudioManager.play(snippets[key]["audio"])
+		playing = AudioManager.play("res://Resources/Sound/Narrator/" + snippets[key]["audio"], 0)
 		preemt = snippets[key]["preemtible"]
 	elif preemt:
 		playing.stop()
-		playing = AudioManager.play(snippets[key]["audio"])
+		playing = AudioManager.play("res://Resources/Sound/Narrator/" + snippets[key]["audio"], 0)
 		preemt = snippets[key]["preemtible"]
 		
 
