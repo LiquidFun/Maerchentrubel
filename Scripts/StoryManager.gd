@@ -52,12 +52,12 @@ var snippets = {
 	#},
 	"wolf_kampf_tutorial": { 
 		"audio": "narrator_wolf_kampf_tutorial_steine.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"wolf_tutorial_tot": { 
 		"audio": "narrator_wolf_tutorial_tot.ogg",
-		"preemtible": false,
+		"preemtible": true,
 		"oneshot": true
 	},
 	"rotk_tot": { 
