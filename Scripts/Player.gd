@@ -90,6 +90,10 @@ func make_attack(target):
 	animated_sprite.play("attack_basket")
 	AudioManager.play("res://Resources/Sound/Sfx/basket_punch.ogg")
 	return target.receive_attack(to_hit, damage)
+	
+func heal():
+	hit_points = 100
+	emit_signal("health_changed", hit_points)
 
 func receive_attack(to_hit, damage):
 	var status

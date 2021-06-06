@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Tilemaps/Tilemap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Resources/Other/TestOpengameart.tres" type="TileSet" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/Objects/Teleporter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/TeleporterEncounter1.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/SnowTrigger.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Objects/Potion.tscn" type="PackedScene" id=13]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -177,7 +178,7 @@ position = Vector2( 850.97, 389.424 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="Player" parent="Navigation2D/Trees" instance=ExtResource( 3 )]
-position = Vector2( 1963.8, 671.433 )
+position = Vector2( 598.548, 312.08 )
 
 [node name="HPBar" parent="Navigation2D/Trees/Player" instance=ExtResource( 6 )]
 margin_left = -13.6193
@@ -199,6 +200,22 @@ rotation = -9.1e-05
 
 [node name="Obstacle6" parent="Navigation2D/Trees" instance=ExtResource( 9 )]
 position = Vector2( 1820.1, 512.198 )
+rotation = -9.1e-05
+
+[node name="Potion" parent="Navigation2D/Trees" instance=ExtResource( 13 )]
+position = Vector2( 767.569, 1017.34 )
+rotation = -9.1e-05
+
+[node name="Potion2" parent="Navigation2D/Trees" instance=ExtResource( 13 )]
+position = Vector2( 472.506, 406.008 )
+rotation = -9.1e-05
+
+[node name="Potion3" parent="Navigation2D/Trees" instance=ExtResource( 13 )]
+position = Vector2( 1360.16, 187.681 )
+rotation = -9.1e-05
+
+[node name="Potion4" parent="Navigation2D/Trees" instance=ExtResource( 13 )]
+position = Vector2( 1686.67, 262.36 )
 rotation = -9.1e-05
 
 [node name="CombatManager" parent="." instance=ExtResource( 4 )]

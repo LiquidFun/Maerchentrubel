@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/Other/player_spriteframes.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Particles/BloodParticles.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Particles/FootDustParticles.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Particles/SnowParticles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/Shadow.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.23195
@@ -14,6 +15,10 @@ radius = 3.23195
 "Player",
 ]]
 script = ExtResource( 2 )
+
+[node name="Shadow" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1.08033, 7.37599 )
+scale = Vector2( 0.7, 0.7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.0579433, 4.43454 )
