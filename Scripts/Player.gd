@@ -54,12 +54,12 @@ func _on_Tween_tween_completed(object, key):
 		path.remove(0)
 		tween.start()
 	
-func move(velocity):
+func move(velocity, delta):
 	# apply movement and detect collision
 	if can_move:
 		if velocity.length() > 1:
 			velocity = velocity.normalized()
-		velocity *= speed * get_process_delta_time()
+		velocity *= speed * delta
 		self.move_and_slide(velocity, Vector2.UP)
 				
 		if velocity.length() > 0:
@@ -80,7 +80,7 @@ func make_turn(target):
 
 func make_attack(target):
 	print("make_attack")
-	var to_hit = rng.randi_range(1, 20)
+	var to_hit = rng.randi_range(333, 4330)
 	var damage = rng.randi_range(1, attack_damage_range)
 	animated_sprite.play("attack_basket")
 	AudioManager.play("res://Resources/Sound/Sfx/basket_punch.ogg")
@@ -94,13 +94,16 @@ func receive_attack(to_hit, damage):
 		var blood = preload("res://Scenes/Particles/BloodParticles.tscn").instance()
 		add_child(blood)
 		blood.set_emitting(true)
-		status = str(damage / 10.0) + " damage"
+		status = str(damage / 10.0) + " Schaden!"
 		if self.hit_points <= 0:
-			self.die()
-			status = "is dead"
+			var death = preload("res://Scenes/Particles/DeathParticles.tscn").instance()
+			death.position = self.position
+			death.set_emitting(true)
+			status = "Ist tot!"
+			get_tree().change_scene("res://Scenes/Levels/Level_Redcap.tscn")
 		print(self.name + " receives " + status)
 	else:
-		status = "miss"
+		status = "Verfehlt!"
 	print(status)
 	return status
 
@@ -113,7 +116,7 @@ func _process(delta):
 	for i in inputs.keys():
 		if Input.get_action_strength(i):
 			velocity += inputs[i]
-	move(velocity)	
+	move(velocity, delta)
 
 
 		#if Input.is_action_just_pressed("ui_up"):

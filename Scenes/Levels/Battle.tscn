@@ -1,9 +1,223 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/Sprites/battle_background.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Objects/BrightLight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/Fonts/ChiKareGo.tres" type="DynamicFont" id=3]
 
+[sub_resource type="Animation" id=1]
+resource_name = "FriendliesShow"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("FriendliesLabel:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 90, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("FriendliesLabel:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 340.681, -0.25, 0, 0.25, 0, 302.841, -0.25, 0, 0.25, 0, 124.571, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("FriendliesLabel:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("FriendliesLabel:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("FriendliesLabel:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("FriendliesLabel:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "EnemiesShow"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("EnemiesLabel:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 622.021, -0.25, 0, 0.25, 0, 622.021, -0.25, 0, 0.25, 0, 622.021, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("EnemiesLabel:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 313.266, -0.25, 0, 0.25, 0, 243.472, -0.25, 0, 0.25, 0, 88.7471, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("EnemiesLabel:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("EnemiesLabel:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("EnemiesLabel:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("EnemiesLabel:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 1 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "HideTutorial"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Tutorial:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Tutorial:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Tutorial:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Tutorial:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ShowTutorial"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Tutorial:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Tutorial:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Tutorial:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Tutorial:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
 [node name="Battle2" type="Node2D"]
+position = Vector2( 0.445465, 8.90903 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1025.0
@@ -26,11 +240,13 @@ position = Vector2( 226.53, 462.498 )
 position = Vector2( 773.977, 466.274 )
 
 [node name="FriendliesLabel" type="Label" parent="."]
-margin_left = 140.0
-margin_top = 302.0
-margin_right = 317.0
-margin_bottom = 353.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 90.0
+margin_top = 124.571
+margin_right = 343.0
+margin_bottom = 175.571
 custom_fonts/font = ExtResource( 3 )
+text = "text"
 align = 1
 valign = 1
 autowrap = true
@@ -39,14 +255,128 @@ __meta__ = {
 }
 
 [node name="EnemiesLabel" type="Label" parent="."]
-margin_left = 682.0
-margin_top = 306.0
-margin_right = 859.0
-margin_bottom = 357.0
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 622.021
+margin_top = 88.7471
+margin_right = 965.695
+margin_bottom = 139.747
 custom_fonts/font = ExtResource( 3 )
+text = "text"
 align = 1
 valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FriendlyAnimations" type="AnimationPlayer" parent="."]
+anims/FriendliesShow = SubResource( 1 )
+
+[node name="EnemyAnimations" type="AnimationPlayer" parent="."]
+anims/EnemiesShow = SubResource( 2 )
+
+[node name="BL1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 343.565, 340.198 )
+
+[node name="BL2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 374.266, 368.897 )
+
+[node name="BL3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 409.639, 398.931 )
+
+[node name="BL4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 443.01, 449.655 )
+
+[node name="BL5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 442.343, 496.374 )
+
+[node name="BL6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 435.669, 542.426 )
+
+[node name="BL7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 402.298, 590.48 )
+
+[node name="Tutorial" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="S1" type="Label" parent="Tutorial"]
+margin_left = 339.974
+margin_top = 290.823
+margin_right = 379.974
+margin_bottom = 331.823
+custom_fonts/font = ExtResource( 3 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S2" type="Label" parent="Tutorial"]
+margin_left = 390.6
+margin_top = 319.721
+margin_right = 430.6
+margin_bottom = 360.721
+custom_fonts/font = ExtResource( 3 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S3" type="Label" parent="Tutorial"]
+margin_left = 424.846
+margin_top = 360.897
+margin_right = 464.846
+margin_bottom = 401.897
+custom_fonts/font = ExtResource( 3 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S4" type="Label" parent="Tutorial"]
+margin_left = 451.717
+margin_top = 412.198
+margin_right = 491.717
+margin_bottom = 453.198
+custom_fonts/font = ExtResource( 3 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S5" type="Label" parent="Tutorial"]
+margin_left = 461.109
+margin_top = 471.276
+margin_right = 501.109
+margin_bottom = 512.276
+custom_fonts/font = ExtResource( 3 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S6" type="Label" parent="Tutorial"]
+margin_left = 454.892
+margin_top = 526.748
+margin_right = 494.892
+margin_bottom = 567.748
+custom_fonts/font = ExtResource( 3 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="S7" type="Label" parent="Tutorial"]
+margin_left = 412.362
+margin_top = 567.369
+margin_right = 452.362
+margin_bottom = 608.369
+custom_fonts/font = ExtResource( 3 )
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialAnimation" type="AnimationPlayer" parent="."]
+autoplay = "ShowTutorial"
+anims/HideTutorial = SubResource( 3 )
+anims/ShowTutorial = SubResource( 4 )

@@ -33,13 +33,18 @@ func receive_attack(to_hit, damage):
 		var blood = preload("res://Scenes/Particles/BloodParticles.tscn").instance()
 		add_child(blood)
 		blood.set_emitting(true)
-		status = str(damage / 10.0) + " damage"
+		status = str(damage / 10.0) + " Schaden!"
 		if self.hit_points <= 0:
+			var death = preload("res://Scenes/Particles/DeathParticles.tscn").instance()
+			get_parent().add_child(death)
+			death.position = self.position
+			death.z_index = 1
+			death.set_emitting(true)
+			status = "Ist tot!"
 			self.die()
-			status = "is dead"
 		print(self.name + " receives " + status)
 	else:
-		status = "miss"
+		status = "Verfehlt!"
 	print(status)
 	return status
 

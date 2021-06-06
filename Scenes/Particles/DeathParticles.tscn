@@ -3,29 +3,32 @@
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.529617, 0.613636 ), -4.43545, -4.43545, 0, 0, Vector2( 0.993031, 0.163636 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.409091, 0.840909 )
-colors = PoolColorArray( 1, 1, 1, 1, 0, 0, 0, 1 )
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.526515, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 0.828125, 0.742679, 0.3526, 1, 0, 0, 0, 1 )
 
 [sub_resource type="Curve" id=3]
 min_value = -1.0
-_data = [ Vector2( 0, 0.0250001 ), 0.0, 0.0, 0, 0, Vector2( 1, -0.320454 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, -0.0931817 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.343182 ), 0.0, 0.0, 0, 0 ]
 
-[node name="CPUParticles2D" type="CPUParticles2D"]
-amount = 100
+[node name="Death" type="CPUParticles2D"]
+emitting = false
+amount = 200
+one_shot = true
 explosiveness = 1.0
 local_coords = false
 direction = Vector2( 0, 0 )
 spread = 180.0
-gravity = Vector2( 0, 10 )
-initial_velocity = 20.0
-initial_velocity_random = 0.61
+gravity = Vector2( 0, 60 )
+initial_velocity = 150.0
+initial_velocity_random = 1.0
 angular_velocity = 387.01
 angular_velocity_random = 1.0
 radial_accel = -5.33
 radial_accel_random = 1.0
+scale_amount = 8.0
 scale_amount_curve = SubResource( 1 )
-color_ramp = SubResource( 2 )
-hue_variation = 0.07
-hue_variation_random = 0.28
+color_ramp = SubResource( 4 )
+hue_variation = -1.0
+hue_variation_random = 0.07
 hue_variation_curve = SubResource( 3 )

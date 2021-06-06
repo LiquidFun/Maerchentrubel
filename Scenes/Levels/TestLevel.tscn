@@ -11,7 +11,7 @@
 [ext_resource path="res://Scenes/Objects/Obstacle.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Objects/Teleporter.tscn" type="PackedScene" id=10]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 

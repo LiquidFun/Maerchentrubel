@@ -9,9 +9,15 @@ var battle_scene
 var players_turn = true
 var timer
 var turn = "player"
-var attack_time
+var attack_time = 0
 var prev_player_position
+var stone = null
+var stone_set_time
+var first_cycle = true
 
+export var stone_press_time = 1
+export var enemy_attack_delay = 1
+export var after_enemy_attack_delay = 0.5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -70,6 +76,45 @@ func end_combat():
 	player.get_node("Camera2D").current = true
 	player.get_node("CollisionShape2D").disabled = false
 	player.can_move = true
+	
+func handle_stones():
+	if stone == null:
+		var stone_index = rng.randi_range(1, 7)
+		if stone_set_time == null:
+			stone_index = 3
+			stone_set_time = OS.get_unix_time() + 154656465
+		else:
+			stone_set_time = OS.get_unix_time() 
+			if first_cycle:
+				battle_scene.get_node("TutorialAnimation").play("HideTutorial")
+				first_cycle = false
+		stone = battle_scene.get_node("BL" + str(stone_index))
+		var ap = stone.get_node("AnimationPlayer")
+		ap.play("LightOn")
+	elif stone_set_time + stone_press_time < OS.get_unix_time():
+		var ap = stone.get_node("AnimationPlayer")
+		ap.play("Miss")
+		stone = null
+		attack_time = OS.get_unix_time()
+		turn = "combatant"
+	else:
+		var ap = stone.get_node("AnimationPlayer")
+		for i in range(1, 8):
+			if Input.is_action_pressed("ui_" + str(i)):
+				var status = "Verfehlt!"
+				attack_time = OS.get_unix_time()
+				if str(i) in stone.name:
+					ap.play("Hit")
+					status = player.make_turn(combatant)
+				else:
+					ap.play("Miss")
+				battle_scene.get_node("EnemiesLabel").text = status
+				battle_scene.get_node("EnemyAnimations").play("EnemiesShow")
+				if "tot" in status.to_lower():
+					combatant = null
+				turn = "combatant"
+				stone = null
+				return
 
 func handle_combat_if_in_combat():
 	if in_combat:
@@ -77,17 +122,15 @@ func handle_combat_if_in_combat():
 			if combatant == null:
 				end_combat()
 				return
-			if Input.is_action_just_pressed("ui_accept"):
-				attack_time = OS.get_unix_time()
-				var status = player.make_turn(combatant)
-				battle_scene.get_node("EnemiesLabel").text = status
-				if "dead" in status.to_lower():
-					combatant = null
-				turn = "combatant"
+			if attack_time + after_enemy_attack_delay < OS.get_unix_time():
+				handle_stones()
 		elif turn == "combatant":
-			if attack_time + 0.2 < OS.get_unix_time():
+			if attack_time + enemy_attack_delay < OS.get_unix_time():
 				if combatant != null and battle_scene != null and in_combat:
 					battle_scene.get_node("FriendliesLabel").text = combatant.make_turn(player)
+					battle_scene.get_node("FriendlyAnimations").play("FriendliesShow")
+					
+				attack_time = OS.get_unix_time()
 				turn = "player"
 
 func _process(delta):
