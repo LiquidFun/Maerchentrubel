@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 		player.heal()
 		var particles = preload("res://Scenes/Particles/PotionParticles.tscn").instance()
 		get_parent().add_child(particles)
+		AudioManager.play("res://Resources/Sound/Sfx/pickup.ogg")
 		particles.global_position = self.global_position
 		particles.set_emitting(true)
 		self.queue_free()

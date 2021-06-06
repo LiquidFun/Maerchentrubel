@@ -12,7 +12,9 @@ func _ready():
 func _on_Teleporter_body_entered(body):
 	if body.name == "Player":
 		print (body.name +" was teleported to " +str(self.teleport_location))
+		AudioManager.play("res://Resources/Sound/Sfx/teleport.ogg")
+		body.position = teleport_location
 		var particles = preload("res://Scenes/Particles/TeleportParticles.tscn").instance()
 		add_child(particles)
+		particles.global_position = body.global_position
 		particles.set_emitting(true)
-		body.position = teleport_location
