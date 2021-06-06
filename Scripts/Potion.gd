@@ -18,4 +18,8 @@ func dist(p1, p2):
 func _process(delta: float) -> void:
 	if dist(player, self) < 20:
 		player.heal()
+		var particles = preload("res://Scenes/Particles/PotionParticles.tscn").instance()
+		get_parent().add_child(particles)
+		particles.global_position = self.global_position
+		particles.set_emitting(true)
 		self.queue_free()

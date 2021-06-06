@@ -74,31 +74,32 @@ __meta__ = {
 position = Vector2( 8, 8 )
 frames = SubResource( 10 )
 animation = "full"
+frame = 2
 playing = true
 
 [node name="2" type="AnimatedSprite" parent="."]
 position = Vector2( 24, 8 )
 frames = SubResource( 10 )
 animation = "full"
+frame = 2
 playing = true
 
 [node name="3" type="AnimatedSprite" parent="."]
 position = Vector2( 40, 8 )
 frames = SubResource( 10 )
 animation = "full"
-frame = 3
+frame = 1
 playing = true
 
 [node name="4" type="AnimatedSprite" parent="."]
 position = Vector2( 56, 8 )
 frames = SubResource( 10 )
 animation = "full"
-frame = 3
+frame = 1
 playing = true
 
 [node name="5" type="AnimatedSprite" parent="."]
 position = Vector2( 72, 8 )
 frames = SubResource( 10 )
 animation = "full"
-frame = 2
 playing = true

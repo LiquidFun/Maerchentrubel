@@ -67,7 +67,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "EnemiesShow"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("EnemiesLabel:rect_position:x")
@@ -242,11 +242,10 @@ position = Vector2( 773.977, 466.274 )
 [node name="FriendliesLabel" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 90.0
-margin_top = 124.571
+margin_top = 340.681
 margin_right = 343.0
-margin_bottom = 175.571
+margin_bottom = 391.681
 custom_fonts/font = ExtResource( 3 )
-text = "text"
 align = 1
 valign = 1
 autowrap = true
@@ -257,11 +256,10 @@ __meta__ = {
 [node name="EnemiesLabel" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 622.021
-margin_top = 88.7471
+margin_top = 313.266
 margin_right = 965.695
-margin_bottom = 139.747
+margin_bottom = 364.266
 custom_fonts/font = ExtResource( 3 )
-text = "text"
 align = 1
 valign = 1
 autowrap = true
@@ -273,7 +271,7 @@ __meta__ = {
 anims/FriendliesShow = SubResource( 1 )
 
 [node name="EnemyAnimations" type="AnimationPlayer" parent="."]
-anims/EnemiesShow = SubResource( 5 )
+anims/EnemiesShow = SubResource( 2 )
 
 [node name="BL1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 343.565, 340.198 )
@@ -297,6 +295,7 @@ position = Vector2( 435.669, 542.426 )
 position = Vector2( 402.298, 590.48 )
 
 [node name="Tutorial" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="S1" type="Label" parent="Tutorial"]
 margin_left = 339.974

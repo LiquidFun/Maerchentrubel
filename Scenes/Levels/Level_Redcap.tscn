@@ -250,7 +250,7 @@ position = Vector2( 647.619, -105.465 )
 position = Vector2( 1951.04, -227.534 )
 attack_damage_range = 20
 armor = 10
-plus_to_hit = 8
+plus_to_hit = 5
 
 [node name="Combatant" parent="Navigation2D/Trees" instance=ExtResource( 5 )]
 position = Vector2( 850.97, 389.424 )
@@ -263,13 +263,13 @@ scale = Vector2( 0.6, 0.6 )
 [node name="Player" parent="Navigation2D/Trees" instance=ExtResource( 3 )]
 position = Vector2( 631.949, -366.625 )
 
-[node name="Light2D" parent="Navigation2D/Trees/Player/Light" index="0"]
+[node name="Light2D" parent="Navigation2D/Trees/Player/Light" index="1"]
 energy = 0.0
 
-[node name="Light2D2" parent="Navigation2D/Trees/Player/Light" index="1"]
+[node name="Light2D2" parent="Navigation2D/Trees/Player/Light" index="2"]
 energy = 0.0
 
-[node name="Light2D3" parent="Navigation2D/Trees/Player/Light" index="2"]
+[node name="Light2D3" parent="Navigation2D/Trees/Player/Light" index="3"]
 energy = 0.6
 
 [node name="HPBar" parent="Navigation2D/Trees/Player" instance=ExtResource( 6 )]

@@ -12,11 +12,14 @@ animations = [ {
 
 [node name="Light" type="Node2D"]
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 1 )
 texture_scale = 0.15
 color = Color( 0.945098, 0.87451, 0.807843, 1 )
-energy = 0.5
+energy = 0.3
 range_height = -628.1
 range_z_max = 1
 range_item_cull_mask = 5
@@ -27,7 +30,7 @@ shadow_item_cull_mask = 5
 texture = ExtResource( 1 )
 texture_scale = 0.08
 color = Color( 0.945098, 0.87451, 0.807843, 1 )
-energy = 0.5
+energy = 0.3
 range_z_max = 1
 range_item_cull_mask = 5
 shadow_enabled = true
@@ -37,11 +40,8 @@ shadow_item_cull_mask = 5
 texture = ExtResource( 1 )
 texture_scale = 0.04
 color = Color( 0.945098, 0.87451, 0.807843, 1 )
-energy = 0.5
+energy = 0.3
 range_z_max = 1
 range_item_cull_mask = 5
 shadow_enabled = true
 shadow_item_cull_mask = 5
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )

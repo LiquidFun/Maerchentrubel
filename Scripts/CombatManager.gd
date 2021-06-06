@@ -72,6 +72,7 @@ func end_combat():
 	battle_scene.queue_free()
 	battle_scene = null
 	in_combat = false
+	first_cycle = true
 	player.get_node("Camera2D").current = true
 	player.get_node("CollisionShape2D").disabled = false
 	player.can_move = true
