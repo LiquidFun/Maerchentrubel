@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "StartSnowing"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 50, -0.25, 0, 0.25, 0, 1000, 0, 0, 0, 0 ),
+"times": PoolRealArray( 0, 0.1, 20 )
+}
+
+[node name="Snow" type="CPUParticles2D"]
+emitting = false
+amount = 200
+lifetime = 1.5
+local_coords = false
+emission_shape = 2
+emission_rect_extents = Vector2( 100, 1 )
+direction = Vector2( -1, 1 )
+initial_velocity = 50.0
+scale_amount = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/StartSnowing = SubResource( 1 )

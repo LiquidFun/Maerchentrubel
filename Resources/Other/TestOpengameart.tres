@@ -839,14 +839,14 @@ points = PoolVector2Array( 31.3893, 57.2381, 18.3283, 57.2381, 18.3283, 50.5402,
 4/z_index = 0
 5/name = "test_opengameart.png 5"
 5/texture = ExtResource( 1 )
-5/tex_offset = Vector2( 0, 0 )
+5/tex_offset = Vector2( 0, -18 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 256, 64, 48, 64 )
 5/tile_mode = 0
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/occluder_offset = Vector2( 0, -18 )
+5/navigation_offset = Vector2( 0, -18 )
+5/shape_offset = Vector2( 0, -18 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, -18 )
 5/shape = SubResource( 96 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
@@ -855,7 +855,7 @@ points = PoolVector2Array( 31.3893, 57.2381, 18.3283, 57.2381, 18.3283, 50.5402,
 "one_way": false,
 "one_way_margin": 1.0,
 "shape": SubResource( 96 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, -18 )
 } ]
 5/z_index = 0
 6/name = "test_opengameart.png 6"

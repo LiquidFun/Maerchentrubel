@@ -32,7 +32,7 @@ func play(sound_path, loop=false, volume=-10):
 	p.stream = load(sound_path)
 	p.stream.set_loop(loop)
 	p.volume_db = clamp(volume, -80, 0)
-	#p.play()
+	p.play()
 	return p
 
 func _process(delta):

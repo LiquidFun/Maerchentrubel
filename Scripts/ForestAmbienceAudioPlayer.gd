@@ -16,6 +16,7 @@ var sounds = [
 ]
 
 var stopped = false
+var previous = -1
 
 var noise = null
 
@@ -29,12 +30,18 @@ func _ready():
 #	sounds.append(sound)
 
 func _on_stream_finished(p):
+	yield(get_tree().create_timer(rng.randf_range(0, 5)), "timeout")
 	play()
 	
 func play():
 	stopped = false
-	var i = rng.randi_range(0, len(sounds) - 1)
-	var p = AudioManager.play(sounds[i])
+	var i
+	while true:
+		i = rng.randi_range(0, len(sounds) - 1)
+		if i != previous:
+			break
+	previous = i
+	var p = AudioManager.play(sounds[i], false, -20)
 	p.connect("finished", self, "_on_stream_finished", [p])
 
 func stop():

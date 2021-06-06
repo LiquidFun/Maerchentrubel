@@ -8,6 +8,7 @@ extends Node
 var rng = RandomNumberGenerator.new()
 
 var sounds = []
+var previous = -1
 
 var stopped = false
 
@@ -24,7 +25,12 @@ func _on_stream_finished(p):
 	
 func play():
 	stopped = false
-	var i = rng.randi_range(0, len(sounds) - 1)
+	var i
+	while true:
+		i = rng.randi_range(0, len(sounds) - 1)
+		if i != previous:
+			break
+	previous = i
 	var p = AudioManager.play(sounds[i])
 	p.connect("finished", self, "_on_stream_finished", [p])
 
