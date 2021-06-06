@@ -448,6 +448,26 @@ audio_key = "teleporter_introduction"
 position = Vector2( 635.316, 89.9798 )
 audio_key = "waldrand"
 
+[node name="Node2D6" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 1661.34, 755.756 )
+audio_key = "gatter_raetsel_1"
+
+[node name="Node2D7" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 1772.71, 580.747 )
+audio_key = "gatter_raetsel_2"
+
+[node name="Node2D8" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 2099.29, 642.099 )
+audio_key = "gatter_raetsel_3"
+
+[node name="Node2D9" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 2284.17, 547.326 )
+audio_key = "weg_zu_oma"
+
+[node name="Node2D10" parent="StoryTriggers" instance=ExtResource( 15 )]
+position = Vector2( 1787.76, 83.1711 )
+audio_key = "haus_großmutter"
+
 [connection signal="health_changed" from="Navigation2D/Trees/Player" to="Navigation2D/Trees/Player/HPBar" method="_on_Player_health_changed"]
 
 [editable path="Navigation2D/Trees/Player"]

@@ -5,6 +5,8 @@ extends Node
 # var a = 2
 # var b = "text"
 
+var is_tutorial = true
+
 var snippets = {
 	"prolog": {
 		"audio": "narrator_prolog.ogg",
@@ -46,13 +48,13 @@ var snippets = {
 	},
 	"wolf_kampf_intro": { 
 		"audio": "narrator_wolf_kampf_intro.ogg",
-		"preemtible": false 
+		"preemtible": true 
 	},
 	"wolf_kampf_tutorial": { 
 		"audio": "narrator_wolf_kampf_tutorial_steine.ogg",
 		"preemtible": false 
 	},
-	"wolf_tot": { 
+	"wolf_tutorial_tot": { 
 		"audio": "narrator_wolf_tutorial_tot.ogg",
 		"preemtible": false,
 		"oneshot": true
@@ -64,6 +66,52 @@ var snippets = {
 	"teleporter_introduction": { 
 		"audio": "narrator_teleporter_introduction.ogg",
 		"preemtible": false 
+	},
+	"endkampf_cutscene": { 
+		"audio": "narrator_endkampf_cutscene.ogg",
+		"preemtible": false 
+	},
+	"endkampf_start": { 
+		"audio": "narrator_endkampf_start.ogg",
+		"preemtible": false 
+	},
+	"endkampf_wolf_50": { 
+		"audio": "narrator_endkampf_start.ogg",
+		"preemtible": false 
+	},
+	"endkampf_wolf_tot": { 
+		"audio": "narrator_endkampf_wolf_tot.ogg",
+		"preemtible": false 
+	},
+	"gatter_raetsel_1": { 
+		"audio": "narrator_gatter_raetsel_1.ogg",
+		"preemtible": true,
+		"oneshot": true
+	},
+	"gatter_raetsel_2": { 
+		"audio": "narrator_gatter_raetsel_2.ogg",
+		"preemtible": true,
+		"oneshot": true
+	},
+	"gatter_raetsel_3": { 
+		"audio": "narrator_gatter_raetsel_3.ogg",
+		"preemtible": true,
+		"oneshot": true
+	},
+	"haus_großmutter": { 
+		"audio": "narrator_haus_großmutter.ogg",
+		"preemtible": false,
+		"oneshot": true
+	},
+	"weg_zu_oma": { 
+		"audio": "narrator_weg_zum_haus_der_oma.ogg",
+		"preemtible": true,
+		"oneshot": true
+	},
+	"healing_potion": { 
+		"audio": "narrator_on_healing_potion_pickup.ogg",
+		"preemtible": true,
+		"oneshot": true
 	},
 	"teleport": { 
 		"random_set": [
