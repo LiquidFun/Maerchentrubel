@@ -16,7 +16,7 @@ var music = null
 func _ready():
 	music = AudioManager.play("Music/mainmenu.ogg", true, -5)
 	for i in max_cycle:
-		if i in [0]:
+		if i in Globals.levels_completed:
 			_on_Next_button_up()
 			get_node(cycle[i+1][0]).get_node("AnimationPlayer").play("ShowText")
 		else:

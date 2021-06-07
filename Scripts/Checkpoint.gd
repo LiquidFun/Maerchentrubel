@@ -8,6 +8,7 @@ func _on_Checkpoint_body_entered(body: Node) -> void:
 		
 func activate():
 	$Particles.emitting = true
+	AudioManager.play("Sfx/checkpoint.ogg", false)
 	Globals.checkpoint = self
 	
 func deactivate():

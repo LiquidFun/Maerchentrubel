@@ -153,7 +153,11 @@ func _play(key):
 		if snippets[key]["oneshot"]:
 			snippets[key]["oneshot"] = false
 		else:
-			return
+			return null
+	if playing != null:
+		# Stop does not emit finished, so this abomination is tried instead
+		playing.seek(playing.stream.get_length() - 0.05)
+		yield(get_tree().create_timer(0.2), "timeout")
 	playing = AudioManager.play("Narrator/" + audio, false, 0)
 	preemt = snippets[key]["preemtible"]
 	return playing
