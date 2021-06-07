@@ -6,7 +6,7 @@ export var tween_speed = 5.0
 export var attack_damage_range = 20
 export var armor = 15
 export var hit_points = 100
-export var speed = 3000
+export var speed = 50
 export var can_move = true
 export var light_multiplier = 1
 
@@ -39,7 +39,7 @@ func move(velocity, delta):
 	if can_move:
 		if velocity.length() > 1:
 			velocity = velocity.normalized()
-		velocity *= speed * delta
+		velocity *= speed
 		self.move_and_slide(velocity, Vector2.UP)
 		
 		for index in get_slide_count():
