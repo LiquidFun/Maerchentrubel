@@ -10,8 +10,8 @@ func _ready():
 
 
 func _on_Teleporter_body_entered(body):
-	if body.name == "Player":
-		print (body.name +" was teleported to " +str(self.teleport_location))
+	if body.is_in_group("Player"):
+		print (body.name + " was teleported to " + str(self.teleport_location))
 		AudioManager.play("res://Resources/Sound/Sfx/teleport.ogg", false, -20)
 		StoryManager.play("teleport")
 		body.position = teleport_location

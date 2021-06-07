@@ -75,17 +75,26 @@ func start_combat_if_possible():
 		player.get_node("CollisionShape2D").disabled = true
 		player.can_move = false
 		
+
+		
 func end_combat():
 	unprepare_combatant(player, "Friendlies")
 	unprepare_combatant(combatant, "Enemies")
 	player.global_position = prev_player_position
-	combatant.global_position = prev_combatant_position
+	if combatant != null:
+		combatant.global_position = prev_combatant_position
 	battle_scene.queue_free()
 	battle_scene = null
 	in_combat = false
+	
 	player.get_node("Camera2D").current = true
 	player.get_node("CollisionShape2D").disabled = false
-	player.can_move = true
+	if player.hit_points > 0:
+		player.can_move = true
+	else:
+		combatant.heal()
+
+
 	
 func handle_stones():
 	if stone == null:

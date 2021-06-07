@@ -132,17 +132,14 @@ var preemt = true
 
 var rng = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	pass
-
+	
+	
 func play(key):
 	print("Playing ", playing, " key ", key, " preemt", preemt)
-	if playing == null or not playing.is_playing():
-		_play(key)
-	elif preemt:
-		_play(key)
+	if playing == null or not playing.is_playing() or preemt:
+		return _play(key)
 		
 
 func _play(key):
@@ -152,18 +149,14 @@ func _play(key):
 		audio = snippets[key]["random_set"][i]
 	else:
 		audio = snippets[key]["audio"]
-	print(key, " ", audio)
 	if "oneshot" in snippets[key]:
 		if snippets[key]["oneshot"]:
 			snippets[key]["oneshot"] = false
 		else:
-			playing = null
 			return
-	if playing != null:
-		playing.stop()
-		playing = null
-	playing = AudioManager.play("res://Resources/Sound/Narrator/" + audio, false, -4)
+	playing = AudioManager.play("Narrator/" + audio, false, 0)
 	preemt = snippets[key]["preemtible"]
+	return playing
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

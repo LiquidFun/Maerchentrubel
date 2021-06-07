@@ -20,14 +20,14 @@ __meta__ = {
 }
 
 [node name="Shadow" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1.08033, 7.37599 )
+position = Vector2( 0, 8 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0.0579433, 4.43454 )
+position = Vector2( 0, 6 )
 frames = ExtResource( 1 )
 animation = "idle"
-offset = Vector2( 0, -5 )
+offset = Vector2( 0, -6 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -56,7 +56,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.555185, 4.29836 )
+position = Vector2( 0.555185, 4.91085 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true

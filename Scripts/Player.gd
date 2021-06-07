@@ -64,9 +64,8 @@ func make_turn(target):
 	return make_attack(target)
 
 func make_attack(target):
-	print("make_attack")
 	var to_hit = rng.randi_range(333, 4330)
-	var damage = rng.randi_range(1, attack_damage_range)
+	var damage = rng.randi_range(5, attack_damage_range)
 	animated_sprite.play("attack_basket")
 	AudioManager.play("res://Resources/Sound/Sfx/basket_punch.ogg")
 	return target.receive_attack(to_hit, damage)
@@ -75,8 +74,8 @@ func heal():
 	add_hit_points(1000)
 	has_reached_50 = false
 	
-func add_hit_points(hit_points):
-	self.hit_points = clamp(hit_points, 0, 100)
+func add_hit_points(hp):
+	self.hit_points = clamp(self.hit_points + hp, 0, 100)
 	emit_signal("health_changed", self.hit_points)
 
 func receive_attack(to_hit, damage):
@@ -90,7 +89,6 @@ func receive_attack(to_hit, damage):
 		if self.hit_points <= 0:
 			self.die()
 			status = "Gestorben!"
-		print(self.name + " receives " + status)
 	else:
 		status = "Verfehlt!"
 	print(status)
@@ -101,12 +99,16 @@ func receive_attack(to_hit, damage):
 
 func die():
 	var death = preload("res://Scenes/Particles/DeathParticles.tscn").instance()
-	death.position = self.position
+	self.add_child(death)
+	death.scale.x = 0.1
+	death.scale.y = 0.1
 	death.set_emitting(true)
 	StoryManager.play("rotk_tot")
+	can_move = false
 	yield(get_tree().create_timer(2), "timeout")
+	can_move = true
 	if Globals.checkpoint == null:
-		get_tree().change_scene("res://Scenes/Levels/Level_Redcap.tscn")
+		get_tree().change_scene("res://Scenes/Levels/LevelRedcap.tscn")
 	else:
 		heal()
 		self.global_position = Globals.checkpoint.global_position

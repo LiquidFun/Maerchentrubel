@@ -6,10 +6,10 @@
 [node name="Grandma" type="Node2D"]
 
 [node name="Shadow" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0.626354, 1.37056 )
+position = Vector2( 0, 8 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="GrandmaNoOutline" type="Sprite" parent="."]
-position = Vector2( 0.0364342, 0.190708 )
+position = Vector2( 0, 6 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -6 )

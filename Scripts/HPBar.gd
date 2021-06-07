@@ -32,4 +32,3 @@ func update_bars(player_health):
 
 func _on_Player_health_changed(player_health) -> void:
 	update_bars(player_health)
-	print("Health changed!")

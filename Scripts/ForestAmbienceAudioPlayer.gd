@@ -1,18 +1,14 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var rng = RandomNumberGenerator.new()
 
 var sounds = [
-	"res://Resources/Sound/Sfx/chirp1.ogg",
-	"res://Resources/Sound/Sfx/chirp2.ogg",
-	"res://Resources/Sound/Sfx/chirp3.ogg",
-	"res://Resources/Sound/Sfx/chirp4.ogg",
-	"res://Resources/Sound/Sfx/chirp5.ogg"
+	"Sfx/chirp1.ogg",
+	"Sfx/chirp2.ogg",
+	"Sfx/chirp3.ogg",
+	"Sfx/chirp4.ogg",
+	"Sfx/chirp5.ogg"
 ]
 
 var stopped = false
@@ -23,10 +19,7 @@ var noise = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	noise = AudioManager.play("res://Resources/Sound/Sfx/noise.ogg", true, 0)
-
-#func add_audio(sound):
-#	sounds.append(sound)
+	noise = AudioManager.play("Sfx/noise.ogg", true, 0, AudioManager.Type.NOISE)
 
 func _on_stream_finished(p):
 	yield(get_tree().create_timer(rng.randf_range(0, 5)), "timeout")
@@ -34,19 +27,9 @@ func _on_stream_finished(p):
 	
 func play():
 	stopped = false
-	var i
-	while true:
-		i = rng.randi_range(0, len(sounds) - 1)
-		if i != previous:
-			break
-	previous = i
-	var p = AudioManager.play(sounds[i], false, -20)
-	p.connect("finished", self, "_on_stream_finished", [p])
+	previous = Globals.new_different_random_index(0, len(sounds)-1, previous)
+	AudioManager.play(sounds[previous], false, -20)
 
 func stop():
 	noise.stop()
 	stopped = true
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
