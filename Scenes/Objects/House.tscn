@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Resources/Sprites/House.png" type="Texture" id=1]
+[ext_resource path="res://Resources/Sprites/HouseSnow.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Sprites/House2.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Sprites/House3.png" type="Texture" id=4]
+[ext_resource path="res://Resources/Sprites/House4.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "HouseRed",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "HouseYellow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "HouseGreen",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "HouseBlue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "HouseRedSnow",
+"speed": 5.0
+} ]
+
+[node name="House" type="AnimatedSprite"]
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 2 )
+animation = "HouseRed"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+show_behind_parent = true
+color = Color( 0, 0, 0, 0.290196 )
+polygon = PoolVector2Array( -19.2444, 24.4901, -19.0459, 28.657, 8.13831, 38.6645, 36.5131, 41.3562, 39.8863, 23.5842, 14.8848, 10.4881 )

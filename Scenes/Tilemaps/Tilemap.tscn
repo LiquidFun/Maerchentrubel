@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Resources/Other/Tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Scripts/deleteThis-SoundManager.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Other/TestOpengameart.tres" type="TileSet" id=1]
 
 [node name="TileMap" type="TileMap"]
+light_mask = 0
+position = Vector2( 0, 14.6834 )
+rotation = 9.1e-05
+z_as_relative = false
 tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
+cell_size = Vector2( 8, 8 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+cell_y_sort = true
+centered_textures = true
+cell_clip_uv = true
+occluder_light_mask = 4
 format = 1
-script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}

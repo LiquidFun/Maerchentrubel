@@ -15,7 +15,7 @@ var stone = null
 var stone_set_time = null
 var first_cycle = true
 
-export var stone_press_time = 0.9
+export var stone_press_time = 1.7
 export var enemy_attack_delay = 1
 export var after_enemy_attack_delay = 0.5
 

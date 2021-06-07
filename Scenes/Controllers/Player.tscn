@@ -15,6 +15,9 @@ radius = 3.23195
 "Player",
 ]]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Shadow" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1.08033, 7.37599 )
@@ -25,26 +28,41 @@ position = Vector2( 0.0579433, 4.43454 )
 frames = ExtResource( 1 )
 animation = "idle"
 offset = Vector2( 0, -5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Light" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0.0138361, -0.735676 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 5.0
 default_color = Color( 0.647059, 0.239216, 0.239216, 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0.140308, 6.75266 )
 current = true
 zoom = Vector2( 0.2, 0.2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.555185, 4.29836 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Blood" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0.54567, 6.10157 )
@@ -54,7 +72,7 @@ position = Vector2( 0.739109, 6.90406 )
 lifetime = 0.5
 
 [node name="Snow" parent="." instance=ExtResource( 6 )]
-position = Vector2( 6.04614, -57.4028 )
+position = Vector2( 6.54614, -58.1528 )
 amount = 177
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
