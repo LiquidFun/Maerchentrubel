@@ -1,29 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/Sprites/battle_background.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Objects/BrightLight.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Resources/Fonts/ChiKareGo.tres" type="DynamicFont" id=3]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("FriendliesLabel:rect_position:x")
 tracks/0/interp = 1
@@ -85,7 +66,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("EnemiesLabel:rect_position:x")
 tracks/0/interp = 1
@@ -147,7 +128,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5, 1 )
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Tutorial:modulate:r")
 tracks/0/interp = 1
@@ -189,7 +170,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Tutorial:modulate:r")
 tracks/0/interp = 1
@@ -233,7 +214,6 @@ tracks/3/keys = {
 
 [node name="Battle2" type="Node2D"]
 position = Vector2( -4716.43, -2166.69 )
-script = SubResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1025.0
@@ -284,10 +264,10 @@ __meta__ = {
 }
 
 [node name="FriendlyAnimations" type="AnimationPlayer" parent="."]
-anims/FriendliesShow = SubResource( 2 )
+anims/FriendliesShow = SubResource( 1 )
 
 [node name="EnemyAnimations" type="AnimationPlayer" parent="."]
-anims/EnemiesShow = SubResource( 3 )
+anims/EnemiesShow = SubResource( 2 )
 
 [node name="BL1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 343.565, 340.198 )
@@ -392,5 +372,5 @@ __meta__ = {
 
 [node name="TutorialAnimation" type="AnimationPlayer" parent="."]
 autoplay = "ShowTutorial"
-anims/HideTutorial = SubResource( 4 )
-anims/ShowTutorial = SubResource( 5 )
+anims/HideTutorial = SubResource( 3 )
+anims/ShowTutorial = SubResource( 4 )

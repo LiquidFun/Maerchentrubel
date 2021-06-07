@@ -1,5 +1,6 @@
 extends Node
 
+
 var num_players = 8
 var bus = "master"
 
@@ -9,31 +10,36 @@ var queue = []  # The queue of sounds to play.
 
 var playing = []
 
+enum Type {MUSIC, NARRATOR, SFX, NOISE, OTHER, AUTO}
+var audio_players = {}	
+var _string_to_audio_type = {}
+
 func _ready():
-	pass
-	# Create the pool of AudioStreamPlayer nodes.
-	#for i in num_players:
-	#	var p = AudioStreamPlayer.new()
-	#	add_child(p)
-	#	available.append(p)
-	#	p.connect("finished", self, "_on_stream_finished", [p])
-	#	p.bus = bus
+	for type in Type:
+		audio_players[type] = AudioStreamPlayer.new()
+		_string_to_audio_type[str(type)] = type
 
 func _on_stream_finished(stream):
-	# When finished playing a stream, make the player available again.
-	#available.append(stream)
 	remove_child(stream)
 
-func play(sound_path, loop=false, volume=-10):
-	var p = AudioStreamPlayer.new()
-	add_child(p)
-	p.connect("finished", self, "_on_stream_finished", [p])
-	p.bus = bus
-	p.stream = load(sound_path)
-	p.stream.set_loop(loop)
-	p.volume_db = clamp(volume, -80, 0)
-	p.play()
-	return p
+func play(sound_path, loop=false, volume=-10, type=Type.AUTO):
+	sound_path = sound_path.trim_prefix("res://Resources/Sound/")
+	if type == Type.AUTO:
+		var sound_folder = sound_path.split("/")[0]
+		type = _string_to_audio_type[sound_folder.to_upper()]
+	print(type)
+	var audio_player = audio_players[type]
+	add_child(audio_player)
+	#audio_player.connect("finished", self, "_on_stream_finished", [audio_player])
+	audio_player.bus = bus
+	
+	sound_path = "res://Resources/Sound/" + sound_path
+	print(sound_path)
+	audio_player.stream = load(sound_path)
+	audio_player.stream.set_loop(loop)
+	audio_player.volume_db = clamp(volume, -80, 10)
+	audio_player.play()
+	return audio_player
 
 #func _process(delta):
 	# Play a queued sound if any players are available.

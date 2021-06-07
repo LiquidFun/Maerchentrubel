@@ -20,7 +20,6 @@ signal health_changed
 
 var path = PoolVector2Array()
 
-var initiative = 0
 var rng = RandomNumberGenerator.new()
 
 var inputs = {
@@ -32,31 +31,9 @@ var inputs = {
 
 var has_reached_50 = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
-	pass # Replace with function body.
 
-func move_tween(newPos):
-	tween.interpolate_property(self, "position",
-		position, newPos,
-		1.0/tween_speed, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.start()
-	animated_sprite.play("walking_basket")
-
-func move_tween_path(path):
-	tween.interpolate_property()
-
-func _on_Tween_tween_completed(object, key):
-	animated_sprite.stop()
-	if path.size() > 0:
-		print("move to " + str(path[0]))
-		tween.interpolate_property(self, "position",
-			self.position, path[0],
-			1.0/tween_speed, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
-		path.remove(0)
-		tween.start()
-	
 func move(velocity, delta):
 	# apply movement and detect collision
 	if can_move:
@@ -95,26 +72,24 @@ func make_attack(target):
 	return target.receive_attack(to_hit, damage)
 	
 func heal():
-	hit_points = 100
+	add_hit_points(1000)
 	has_reached_50 = false
-	emit_signal("health_changed", hit_points)
+	
+func add_hit_points(hit_points):
+	self.hit_points = clamp(hit_points, 0, 100)
+	emit_signal("health_changed", self.hit_points)
 
 func receive_attack(to_hit, damage):
 	var status
 	if to_hit >= armor:
-		self.hit_points -= damage
-		emit_signal("health_changed", hit_points)
+		add_hit_points(-damage)
 		var blood = preload("res://Scenes/Particles/BloodParticles.tscn").instance()
 		add_child(blood)
 		blood.set_emitting(true)
 		status = str(damage / 10.0) + " Schaden!"
 		if self.hit_points <= 0:
-			var death = preload("res://Scenes/Particles/DeathParticles.tscn").instance()
-			death.position = self.position
-			death.set_emitting(true)
-			status = "Ist tot!"
-			StoryManager.play("rotk_tot")
-			get_tree().change_scene("res://Scenes/Levels/Level_Redcap.tscn")
+			self.die()
+			status = "Gestorben!"
 		print(self.name + " receives " + status)
 	else:
 		status = "Verfehlt!"
@@ -125,20 +100,20 @@ func receive_attack(to_hit, damage):
 	return status
 
 func die():
-	self.queue_free()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	var death = preload("res://Scenes/Particles/DeathParticles.tscn").instance()
+	death.position = self.position
+	death.set_emitting(true)
+	StoryManager.play("rotk_tot")
+	yield(get_tree().create_timer(2), "timeout")
+	if Globals.checkpoint == null:
+		get_tree().change_scene("res://Scenes/Levels/Level_Redcap.tscn")
+	else:
+		heal()
+		self.global_position = Globals.checkpoint.global_position
+
 func _process(delta):
-	# movement with wasd
 	var velocity = Vector2(0, 0)
 	for i in inputs.keys():
 		if Input.get_action_strength(i):
 			velocity += inputs[i]
 	move(velocity, delta)
-
-
-		#if Input.is_action_just_pressed("ui_up"):
-		#	position.y -= 16
-		#if Input.is_action_just_pressed("ui_left"):
-		#	position.x -= 16
-		#if Input.is_action_just_pressed("ui_right"):
-		#	position.x +=16

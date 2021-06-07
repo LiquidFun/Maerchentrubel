@@ -9,12 +9,12 @@ var music = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	music = AudioManager.play("res://Resources/Sound/Music/mainmenu.ogg", true, -1)
+	music = AudioManager.play("Music/mainmenu.ogg", true, -1)
 	$Tween.connect("tween_all_completed", self, "_on_tween_completed")
 
 func _on_tween_completed():
 	music.stop()
-	AudioManager.play("res://Resources/Sound/Sfx/page_new.ogg")
+	AudioManager.play("Sfx/page_new.ogg")
 	get_tree().change_scene("res://Scenes/Levels/Book.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -14,17 +14,18 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Noerdjam- 2021"
+config/name="Märchentrubel"
+config/description=" A game where you play the main characters in multiple fairy tales in a lovely 2D top-down pixel art world. It was created for the 48 hour long NØRD game-jam. "
 run/main_scene="res://Scenes/Levels/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-BattleGlobals="*res://Scripts/BattleGlobals.gd"
 AudioManager="*res://Scripts/AudioManager.gd"
 ShuffleAudioPlayer="*res://Scripts/ShuffleAudioPlayer.gd"
 ForestAmbienceAudioPlayer="*res://Scripts/ForestAmbienceAudioPlayer.gd"
 StoryManager="*res://Scripts/StoryManager.gd"
+Globals="*res://Scripts/Globals.gd"
 
 [display]
 

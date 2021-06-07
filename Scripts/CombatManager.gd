@@ -11,6 +11,7 @@ var timer
 var turn = "player"
 var attack_time = 0
 var prev_player_position
+var prev_combatant_position
 var stone = null
 var stone_set_time = null
 var first_cycle = true
@@ -54,6 +55,8 @@ func start_combat_if_possible():
 	var possible_combatant = get_combatant_if_exists()
 	if possible_combatant != null and not in_combat:
 		combatant = possible_combatant
+		if combatant.hit_points <= 0 or player.hit_points <= 0:
+			return
 		if combatant.is_endboss:
 			StoryManager.play("endkampf_start")
 		else:
@@ -64,6 +67,7 @@ func start_combat_if_possible():
 		battle_scene = preload("res://Scenes/Levels/Battle.tscn").instance()
 		battle_scene.modulate = owner.modulate
 		prev_player_position = player.global_position
+		prev_combatant_position = combatant.global_position
 		add_child(battle_scene)
 		battle_scene.get_node("Camera2D").current = true
 		prepare_combatant(player, "Friendlies")
@@ -75,6 +79,7 @@ func end_combat():
 	unprepare_combatant(player, "Friendlies")
 	unprepare_combatant(combatant, "Enemies")
 	player.global_position = prev_player_position
+	combatant.global_position = prev_combatant_position
 	battle_scene.queue_free()
 	battle_scene = null
 	in_combat = false
@@ -136,7 +141,10 @@ func handle_combat_if_in_combat():
 					battle_scene.get_node("FriendlyAnimations").play("FriendliesShow")
 					
 				attack_time = OS.get_unix_time()
+				if player.hit_points <= 0:
+					end_combat()
 				turn = "player"
+				
 
 func _process(delta):
 	start_combat_if_possible()

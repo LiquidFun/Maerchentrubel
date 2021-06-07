@@ -40,8 +40,6 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Tween" type="Tween" parent="."]
-
 [node name="Line2D" type="Line2D" parent="."]
 width = 5.0
 default_color = Color( 0.647059, 0.239216, 0.239216, 1 )
@@ -74,5 +72,3 @@ lifetime = 0.5
 [node name="Snow" parent="." instance=ExtResource( 6 )]
 position = Vector2( 6.54614, -58.1528 )
 amount = 177
-
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
