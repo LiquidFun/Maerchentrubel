@@ -31,6 +31,7 @@ Globals="*res://Scripts/Globals.gd"
 
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+window/intended_usage/framebuffer_allocation.mobile=0
 
 [input]
 
@@ -117,6 +118,9 @@ ui_7={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
+2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
