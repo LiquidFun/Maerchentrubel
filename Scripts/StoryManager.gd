@@ -74,7 +74,7 @@ var snippets = {
 		"oneshot": true
 	},
 	"endkampf_wolf_50": { 
-		"audio": "narrator_endkampf_start.ogg",
+		"audio": "narrator_endkampf_wolf_50.ogg",
 		"preemtible": true 
 	},
 	"endkampf_wolf_tot": { 
