@@ -14,6 +14,9 @@ var music = null
 
 
 func _ready():
+	for page_index in cycle:
+		for page in cycle[page_index]:
+			page.hide()
 	music = AudioManager.play("Music/mainmenu.ogg", true, -5)
 	for index in max_cycle:
 		if index in Globals.levels_completed:

@@ -15,7 +15,8 @@ func new_different_random_index(from, to, previous=null):
 			break
 	return new_index
 
-func _on_boss_finish():
+func _on_boss_finish(tree):
 	levels_completed += [0]
-	get_tree().change_scene("res://Scenes/Levels/Book.tscn")
+	print("Finished")
+	tree.change_scene("res://Scenes/Levels/Book.tscn")
 

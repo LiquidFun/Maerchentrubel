@@ -1,10 +1,5 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 var is_tutorial = true
 
 var snippets = {
@@ -161,7 +156,3 @@ func _play(key):
 	playing = AudioManager.play("Narrator/" + audio, false, 0)
 	preemt = snippets[key]["preemtible"]
 	return playing
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

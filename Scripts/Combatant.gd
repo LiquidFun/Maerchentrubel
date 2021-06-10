@@ -13,6 +13,7 @@ export var is_endboss = false
 
 var has_reached_50 = false
 
+signal endboss_dead
 signal health_changed
 
 # Called when the node enters the scene tree for the first time.
@@ -54,6 +55,7 @@ func receive_attack(to_hit, damage):
 			death.set_emitting(true)
 			status = "Ist tot!"
 			self.die()
+			return status
 		print(self.name + " receives " + status)
 	else:
 		status = "Verfehlt!"
@@ -65,14 +67,12 @@ func receive_attack(to_hit, damage):
 			StoryManager.play("wolf50")
 		has_reached_50 = true
 	return status
-	
-func _on_boss_finish():
-	get_tree().change_scene("res://Scenes/Levels/Book.tscn")
 
 func die():
 	if is_endboss:
+		#var audio_player = AudioManager.play("Sfx/teleport.o")
 		var audio_player = StoryManager.play("endkampf_wolf_tot")
-		audio_player.connect("finished", Globals, "_on_boss_finish")
+		emit_signal("endboss_dead")
 		
 		var grandma = preload("res://Scenes/Controllers/Grandma.tscn").instance()
 		grandma.position = get_parent().get_node("SpawnGrandma").position
